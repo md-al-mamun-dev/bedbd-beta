@@ -1,0 +1,11 @@
+.image_btn_click{
+    position: absolute;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background: transparent;
+    z-index: 999;
+    border-radius: var(--size-080); 
+    border: none;
+    cursor: pointer;
+}
