@@ -17,10 +17,10 @@ const ViewBasicInfo = () => {
 
 
   return (
-    <div className={`contents text-select-none`}>
+    <div className=' w-100 absolute-center max-width-1280'>
         <h3 className={`${styles.heading}`}>You're Listing</h3>
         <div className={`${styles.icon_wrapper}`}>
-          <Image src={`/icons/${icon}`} fill objectFit='contain'/>
+          <Image src={`/icons/${icon}`} fill />
         </div>
 
         <h3 className={`${styles.brifing_txt}`}>{brifingText}</h3>

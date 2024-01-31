@@ -13,6 +13,7 @@ const activeMenu = 'Dashboard'
 const useName = 'Russell Ahmed'
 
 const menu = [{
+                'id':0,
                 'name': 'Dashboard',
                 'icon' : {
                           'type':'lucidicon',
@@ -20,6 +21,7 @@ const menu = [{
                         },
               },
               {
+                'id':1,
                 'name': 'Profile',
                 'icon' :{
                           'type':'lucidicon',
@@ -27,6 +29,7 @@ const menu = [{
                         },
               },
               {
+                'id':2,
                 'name': 'Message',
                 'icon' : {
                           'type':'lucidicon',
@@ -34,6 +37,7 @@ const menu = [{
                         },
               },
               {
+                'id':3,
                 'name': 'Property',
                 'icon' : {
                           'type':'lucidicon',
@@ -41,6 +45,7 @@ const menu = [{
                         },    
               },
               {
+                'id':4,
                 'name': 'Transaction',
                 'icon' : {
                           'type':'lucidicon',
@@ -48,6 +53,7 @@ const menu = [{
                         },
               },
               {
+                'id':5,
                 'name': 'Setting',
                 'icon' : {
                           'type':'lucidicon',
@@ -55,6 +61,7 @@ const menu = [{
                         },
               },
               {
+                'id':6,
                 'name': 'History',
                 'icon' :{
                           'type':'lucidicon',
@@ -66,16 +73,16 @@ const menu = [{
 
 
   return (
-    <div className={`box-w-400 h-100 bg-secondary-400 p-48-16 clr-neutral-000-a-70 fw-regular-dark flex flex-column space-between ${styles.sidebar}`}>
+    <div className={`box-w-400 min-h-100 bg-secondary-400 p-48-16 clr-neutral-000-a-70 fw-regular-dark flex flex-column space-between ${styles.sidebar}`}>
       <div className='grid gap-16'>
         {
           menu.map(menuItem=>(
                   menuItem['name']=== activeMenu
-                    ? <div className={`flex align-center gap-8 p-12-16 br-8 w-100 bg-transparent cursor-pointer  ${styles.active}`}>
+                    ? <div key={menuItem['id']} className={`flex align-center gap-8 p-12-16 br-8 w-100 bg-transparent cursor-pointer ${styles.active}`}>
                         <LucidIcon name={menuItem['icon']['name']} size={24}/>
                         <h3>{menuItem['name']}</h3> 
                       </div>
-                    : <div className={`flex align-center gap-8 p-12-16 br-8 w-100 bg-transparent cursor-pointer `}>
+                    : <div key={menuItem['id']} className={`flex align-center gap-8 p-12-16 br-8 w-100 bg-transparent cursor-pointer `}>
                         <LucidIcon name={menuItem['icon']['name']} size={24}/>
                         <h3>{menuItem['name']}</h3> 
                       </div>

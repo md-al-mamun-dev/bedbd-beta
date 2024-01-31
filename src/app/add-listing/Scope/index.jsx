@@ -11,7 +11,7 @@ const Scope = () => {
 
 
   return (
-    <div className={`contents text-select-none`}>
+    <div className=' w-100 absolute-center max-width-1280'>
             <h3 className={`${styles.heading}`}>Basic Information</h3>
 
             <div className={`${styles.scope_input}`}>
@@ -20,7 +20,7 @@ const Scope = () => {
                 <div className={`${styles.socps}`}>
                     <div className={`${styles.socpe_item}`}>
                         {
-                            entirePlace 
+                            entirePlace  
                                 
                                 ? <CheckSquare className={`${styles.icon} `} size={24}/>
                                 : <Square className={`${styles.icon} `} size={24}/>

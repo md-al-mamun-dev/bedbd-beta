@@ -38,8 +38,8 @@ const ListingType = () => {
 
 
   return (
-    <div className={`contents`}>
-            <h3 className={`${styles.heading}`}>Basic Information</h3>
+    <div className=' w-100 absolute-center max-width-1280'>
+            <h3 className=' clr-primary-400 txt-align-center fw-regular-dark fs-875'>Basic Information</h3>
 
             <p className={`${styles.sub_heading}`}>List your property on bedbd.com and welcoming guests in a matter of moments!</p>
 
@@ -49,7 +49,7 @@ const ListingType = () => {
                     {
                         apartmentTypes.map(typ=>(<div className={`${styles.listing_type_item}`}>
                                                     <div className={`${styles.item_icon_wrapper}`}>
-                                                        <Image src={`/icons/${typ.icon}`} fill objectFit='contain' />
+                                                        <Image src={`/icons/${typ.icon}`} fill />
                                                     </div>
                                                     <h4 className={`${styles.listing_type_name}`}>{typ.name}</h4>
                                                 </div>))

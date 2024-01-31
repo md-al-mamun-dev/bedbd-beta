@@ -9,7 +9,7 @@ import Image from 'next/image'
 const ImageUpload = () => {
 
   return (
-    <div className={`contents text-select-none ${styles.contents}`}>
+    <div className=' w-100 relative left-50 max-width-1280 p-btm-80'>
         <h3 className={`${styles.heading}`}>Upload Images</h3>
 
         <div className={`text-select-none ${styles.upload_photo}`}>

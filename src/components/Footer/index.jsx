@@ -2,11 +2,15 @@
 import styles from './index.module.css'
 import React from 'react'
 import Image from 'next/image'
+import GooglePlayStoreIcon from '@/../public/icons/ion_logo-google-playstore.svg'
+import AppleStoreIcon from '@/../public/icons/ion_logo-apple-appstore.svg'
+import SocialIconFb from '@/../public/icons/social_fb.svg'
+import SocialIconTwtter from '@/../public/icons/social_twitter.svg'
+import SocialIconInstagram from '@/../public/icons/social_instagram.svg'
+import SocialIconLinkedin from '@/../public/icons/social_linkedin.svg' 
 
 
-
-
-export const Footer = () => {
+export default function Footer() {  
   return (
     <div className={`${styles.footer} `}>
         
@@ -24,8 +28,6 @@ export const Footer = () => {
     </div>
   )
 }
-
-export default Footer
 
 const Logo = () => {
   return (
@@ -50,7 +52,8 @@ const AppLink = () => {
         <div className={`${styles.app_icon_wrapper}`}>
           <Image 
             className={`${styles.app_icon}`} 
-            src={'icons/ion_logo-google-playstore.svg'}
+            alt='google playstore icon'
+            src={GooglePlayStoreIcon}
             height={24}
             width={24}
           />
@@ -61,7 +64,7 @@ const AppLink = () => {
       <div className={`${styles.app_icon_wrapper}`}>
         <Image  
           className={`${styles.app_icon}`}
-            src={'icons/ion_logo-apple-appstore.svg'}
+            src={AppleStoreIcon}
             height={24}
             width={24}
           />
@@ -120,16 +123,16 @@ const SocialLinks = () => {
   return (
     <div className={`${styles.social_links}`}>            
       <div>              
-        <a href="#"><Image src={'icons/social_fb.svg'}  height={24} width={24}/></a>              
+        <a href="#"><Image src={SocialIconFb}  height={24} width={24}/></a>              
       </div>
       <div>
-        <a href="#"><Image src={'icons/social_twitter.svg'}  height={24} width={24}/></a>              
+        <a href="#"><Image src={SocialIconTwtter}  height={24} width={24}/></a>              
       </div>
       <div>
-        <a href="#"><Image src={'icons/social_instagram.svg'}  height={24} width={24}/></a>              
+        <a href="#"><Image src={SocialIconInstagram}  height={24} width={24}/></a>              
       </div>
       <div>
-        <a href="#"><Image src={'icons/social_linkedin.svg'} height={24} width={24}/></a>              
+        <a href="#"><Image src={SocialIconLinkedin} height={24} width={24}/></a>              
       </div>
     </div>
   )

@@ -62,7 +62,7 @@ const MapboxMap = () => {
     //   });
 
     useEffect(() => {
-      mapboxgl.accessToken =  'pk.eyJ1IjoibWQtYWwtbWFtdW4iLCJhIjoiY2xxMTFqajNlMDRrNzJrbzl5NXR6dHd0NSJ9.561zya7R3YlTC4LM6JCB_A';
+      mapboxgl.accessToken =  process.env.NEXT_PUBLIC_MAPBOX_ACCESS_TOKEN;
   
       const map = new mapboxgl.Map({
         container: mapContainer.current,

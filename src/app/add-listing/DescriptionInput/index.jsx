@@ -7,7 +7,7 @@ import Image from 'next/image'
 
 const DescriptionInput = () => {
   return (
-    <div className={`contents`}>
+    <div className=' w-100 absolute-center max-width-1280'>
         <h3 className={`${styles.heading}`}>Property Name</h3>
 
         <div className={`${styles.input_fields}`}>

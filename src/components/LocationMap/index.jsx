@@ -6,22 +6,15 @@ import { GoogleMap, Marker, Circle, MarkerClusterer } from '@react-google-maps/a
 import { useCallback, useEffect, useMemo, useRef, useState } from 'react';
 
 const LocationMap = () => {
-    // const [markerIcon, setMarkerIcon] = useState({url:'fabicon.svg'})
-
-    // Variable need to put into Envirnment variable
-    const API_KEY = 'AIzaSyDh9eU4Ft9T1jBvJuA8O4mYRbzjXGBwee4'
-    const MAP_ID = "2459d1fbcf391924"
 
     const mapRef = useRef
     const mapCenter = useMemo(()=>  ({lat: 23.811056, lng: 90.407608}), [])
     const fixedZoomLevel  = 15
 
-
     const onLoad = useCallback(map => (mapRef.current = map), [])
 
-
     const {isLoaded} = useLoadScript({
-        googleMapsApiKey: API_KEY,
+        googleMapsApiKey: process.env.NEXT_PUBLIC_GOOGLE_MAP_API_KEY,
         libraries:['places']
     })
 

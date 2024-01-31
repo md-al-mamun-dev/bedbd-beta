@@ -13,13 +13,18 @@ import SetRent from './SetRent'
 
 const page = () => {
   return (
-    <div className={`${styles.contents_container}`}>
-        {/* <ListingType  /> */}
+    <div className={` w-100 min-h-100vh relative`}>
+      {/* <div className=' w-100 relative-center max-width-1280'> */}
+      {/* <ListingType  /> */}
         {/* <Scope /> */}
         {/* <ViewBasicInfo/> */}
         {/* <DescriptionInput/> */}
         {/* <ImageUpload/> */}
         <SetRent/>
+      {/* </div> */}
+    {/* <div className={`${styles.contents_container}`}> */}
+
+        
     </div>
   )
 }
