@@ -3,9 +3,30 @@ import Image from 'next/image'
 // import listingItem from '../UIElements/ListingItem'
 import ListingItem from '../UIElements/ListingItem'
 
-const ImageGallery = () => {
+
+async function getData() {
+  
+  const res = await fetch(process.env.API_URL + '/api/property', { method: 'GET' })
+
+ 
+  if (!res.ok) {
+    // This will activate the closest `error.js` Error Boundary
+    throw new Error('Failed to fetch data')
+  }
+ 
+  return res.json()
+}
+
+const ImageGallery = async () => {
+
+  // GET property Data
+  const data = await getData()
+  console.log(data)
 
   const galleryTitle = 'Top Rated Properties'
+
+
+
   
   return (
     <div className={`z-index-1 full-width-container position-relative  ${styles.listing_gallery_container}`}>

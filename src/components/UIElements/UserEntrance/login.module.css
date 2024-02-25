@@ -1,15 +1,15 @@
-.overlay{
-    position: fixed;
-    width: 100%;
-    height: 100%;
-    z-index: 3;
-    background: rgba(0, 0, 0, 0.25);
-    top: var(--size-000);
-    backdrop-filter: blur(var(--size-003));
+/* .overlay{ */
+    /* position: fixed; */
+    /* width: 100%; */
+    /* height: 100%; */
+    /* z-index: 3; */
+    /* background: rgba(0, 0, 0, 0.25); */
+    /* top: var(--size-000); */
+    /* backdrop-filter: blur(var(--size-003)); */
     /* display: none; */
-}
+/* } */
 
-.entrance_box{
+/* .entrance_box{
     position: absolute;
     top: 50%;
     left: 50%;
@@ -22,9 +22,9 @@
     padding: var(--size-350) var(--size-650) var(--size-350) var(--size-650);
     box-shadow: 0px 0px 8px 0px rgba(194, 198, 204, 0.60);
     background: var(--clr-neutral-000);
-}
+} */
 
-.entrance_box > .container {
+/* .entrance_box > .container {
     height: 100%;
     width: 100%;
 }
@@ -57,9 +57,9 @@
 .entrance_box > .container > .title_bar > .close_icon{
     padding-right: var(--size-002);
     cursor: pointer;
-}
+} */
 
-.phone_input{
+/* .phone_input{
     border: var(--size-001) solid #C2C6CC;;
     width: 100%;
     height: var(--size-900);
@@ -67,9 +67,9 @@
     display: inline-flex;
     position: relative;
     z-index: 2;
-}
+} */
 
-.phone_input > .country_code{
+/* .phone_input > .country_code{
     width: 36.38059701492537%;
     max-width: 195px;
     height: 100%;
@@ -80,11 +80,11 @@
     padding-bottom: var(--size-250);
     position: relative;
     user-select: none;
-    -webkit-user-select: none; /* For Safari */
-    -ms-user-select: none; /* For Internet Explorer/Edge */
-}
+    -webkit-user-select: none; 
+    -ms-user-select: none; 
+} */
 
-.phone_input > .country_code::after{
+/* .phone_input > .country_code::after{
     content: "";
     height: 100%;
     position: absolute;
@@ -92,9 +92,9 @@
     left: 194px;
     width: 1px;
     background: #C2C6CC;;
-}
+} */
 
-.phone_input label{
+/* .phone_input label{
     height: 16px;
     font-size: var(--fs-100);
     font-weight: var(--fw-regular-dark);
@@ -105,9 +105,9 @@
     font-size: 14px;
     font-weight: 600;
     color: var(--clr-neutral-500);
-}
+} */
 
-.country_code > .select_country_code >.country_code_options{
+/* .country_code > .select_country_code >.country_code_options{
     background: var(--clr-neutral-000);
     position: absolute;
     left: 25px;;
@@ -116,18 +116,18 @@
     box-shadow: rgba(0, 0, 0, 0.04) 0px 3px 5px;
     max-height: 500px ;
     overflow-y:auto;
-}
+} */
 
-.country_code > .select_country_code > .country_code_options > option{
+/* .country_code > .select_country_code > .country_code_options > option{
     padding: var(--size-070) var(--size-450);
     cursor: pointer;
-}
+} */
 
-.country_code > .select_country_code > .country_code_options > option:hover{
+/* .country_code > .select_country_code > .country_code_options > option:hover{
     background: var(--clr-neutral-050);
-}
+} */
 
-.dropdown_icon{
+/* .dropdown_icon{
     background: transparent;
     border: none;
     outline: none;
@@ -136,9 +136,9 @@
     top: 50%;
     transform: translateY(-50%);
     right: var(--size-310);
-}
+} */
 
-.phone_input > .contact_number{
+/* .phone_input > .contact_number{
     width: 63.61940298507463%;
     max-width: 342px;
     height: 100%;
@@ -147,24 +147,23 @@
     align-items: flex-start;
     justify-content: center;
     padding: var(--size-250) var(--size-325);
-    /* padding: var(--size-325) var(--size-250);    */
-}
+} */
 
-.phone_input > .contact_number > input[type="number"]{
-    border: none;
-    outline: none;
-    -moz-appearance: textfield; /* Firefox */
-    font-size: var(--fs-200);
-    font-weight: var(--fw-semi-bold);
-    color: var(--clr-neutral-500);    
-}
+/* .phone_input > .contact_number > input[type="number"]{ */
+    /* border: none; */
+    /* outline: none; */
+    /* -moz-appearance: textfield;  */
+    /* font-size: var(--fs-200); */
+    /* font-weight: var(--fw-semi-bold); */
+    /* color: var(--clr-neutral-500);     */
+/* } */
 
   /* Hide the increment and decrement buttons */
-.phone_input > .contact_number > input[type="number"]::-webkit-inner-spin-button,
+/* .phone_input > .contact_number > input[type="number"]::-webkit-inner-spin-button,
 .phone_input > .contact_number > input[type="number"]::-webkit-outer-spin-button {
     -webkit-appearance: none;
     margin: 0;
-}
+} */
 
 .info_txt{
     width: 541px;
@@ -188,9 +187,11 @@
     justify-content: center;
     cursor: pointer;
 }
+.btn{
+    border: none;
+}
 
-
-.cta > .continue_btn{
+/* .cta > .continue_btn{
     padding: var(--size-150) var(--size-900);
     font-size: var(--fs-400);
     font-weight: var(--fw-regular-dark);
@@ -201,9 +202,9 @@
     background: var(--clr-primary-400);
     border: none;
     outline: none;
-}
+} */
 
-.cta > .continue_mail{
+/* .cta > .continue_mail{
     color: var(--clr-neutral-500);
     font-size: var(--fs-300);
     font-weight: var(--fw-semi-bold);
@@ -211,7 +212,7 @@
     border: none;
     background: none;
     gap: var(--size-100);
-}
+} */
 
 .alternative_access{
     position: relative;
@@ -246,7 +247,8 @@
     display: flex;
     gap: var(--size-300);
     z-index:999;
-    cursor: pointer;
+    /* cursor: pointer; */
+    justify-content: center;
 }
 .alternative_access > .access_btns > .btn{
     border-radius: 30px;

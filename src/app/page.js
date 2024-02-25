@@ -5,7 +5,8 @@ import Sidebar from '@/components/Sidebar'
 import Footer from '@/components/Footer'
 import SearchFilter from '@/components/SearchFilter'
 import ListingGallery from '@/components/ListingGallery'
-import UserEntrance from '@/components/UIElements/UserEntrance'
+import UserEntrance from '@/components/UIElements/UserEntrance/PhoneInput'
+import AccountProvider from '../context/account/accountContext'
 
 export default function Home() {
   // const [openSidebar, setOpenSlider] = useState(true);
@@ -26,7 +27,9 @@ export default function Home() {
 
   return (
     <>
-      <Header/>
+      <AccountProvider>
+        <Header/>
+      </AccountProvider>
       <div className={`w-100 z-index-1 `}>
           <SearchFilter />
           <ListingGallery/>            

@@ -28,11 +28,11 @@ const Property = async ({params}) => {
 
   // get property Id from url parameter 
   const decodedParameter = decodeURIComponent(params.id);
-  console.log(decodedParameter)
+
   const matchParameter = decodedParameter.match(/id="([^"]+)"/);
-  console.log(matchParameter)
+
   const propertyId = matchParameter ? matchParameter[1] : null;
-  console.log(propertyId)
+
 
 
 
@@ -115,8 +115,8 @@ const Property = async ({params}) => {
                                       },
                           }
                       ]
-  const about =  [
-                  {
+
+  const about =  [{
                       heading:'Room in a rental unit',
                       details:'Your own room in a home, plus access to share space.'
                   },{
@@ -125,8 +125,8 @@ const Property = async ({params}) => {
                   },{
                       heading:'Dedicated Workspace',
                       details:'A room with wifi that’s well-suited for working'
-                  }
-                  ]
+                  }]
+
   const amenities = [
                       {
                           title:'Kitchen',

@@ -7,7 +7,6 @@ import scrollToImg from '@/components/ImageDetails/lib/scrollToImg'
 const ImageClickBtn =({imageId, imgDetailContainerId})=> {
 
   const imgClickHandlar = ()=>{
-    // console.log(imageId)
     openImgContainer(imgDetailContainerId)
     scrollToImg(imageId)
   }
