@@ -13,8 +13,8 @@ const MapboxMap = () => {
     // const [markerIcon, setMarkerIcon] = useState({url:'fabicon.svg'})
 
     // Variable need to put into Envirnment variable
-    // const API_KEY = 'AIzaSyDh9eU4Ft9T1jBvJuA8O4mYRbzjXGBwee4'
-    // const MAP_ID = "2459d1fbcf391924"
+    // const API_KEY = process.env.APPWRITE_API_KEY
+    // const MAP_ID = process.env.NEXT_PUBLIC_GOOGLE_MAP_MAP_ID
 
     // const mapRef = useRef
     // const mapCenter = useMemo(()=>  ({lat: 23.811056, lng: 90.407608}), [])

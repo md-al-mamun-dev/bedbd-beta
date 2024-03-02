@@ -115,8 +115,8 @@ export default function PropertyLocation() {
             <div className='mr-top-24px mr-btm-40px'>
                 <p className="fs-200 mr-btm-4px">Or Drag the pin where is your property located.</p>
                 <div className="radius-4 w-600px h-370px relative">
-                    {/* <GoogleMap/> */}
-                    <Mapbox/>
+                    <GoogleMap/>
+                    {/* <Mapbox/> */}
                     {/* <GoogleLocationMap/> */}
                 </div>
             </div>

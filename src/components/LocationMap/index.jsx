@@ -72,7 +72,7 @@ const LocationMap = () => {
         maxZoom:fixedZoomLevel,
         minZoom:6, 
         draggable: false,
-        mapId: "2459d1fbcf391924",
+        mapId: process.env.NEXT_PUBLIC_GOOGLE_MAP_MAP_ID,
     }), [])  
 
     if(!isLoaded) return <div>Loading...</div>
