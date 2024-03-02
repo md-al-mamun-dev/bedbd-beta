@@ -1,8 +1,7 @@
-.switch_btn_grp{
+/* .switch_btn_grp{
     display: flex;
     grid-area: var(--size-310);
     gap: var(--size-500);
-    /* border: 1px solid red; */
     width: fit-content;
     margin: 0 auto;
 }
@@ -37,4 +36,4 @@
     background: var(--clr-primary-400);
     padding-left: 175px;
     padding-right: 175px;
-}
+} */

@@ -18,6 +18,7 @@ import Host from "./Host";
 import Rating from "./Rating";
 import Review from "./Review";
 import NearbyServices from "./NearbyServices";
+import LeafletMap from '@/components/LeafletMap'
 
 
 const Property = async ({params}) => {
@@ -381,7 +382,7 @@ const Property = async ({params}) => {
             <ImageGallery data={details['images'].slice(0, 4)} totalImageCount={details['images'].length}/>
             <div className={`${styles.geographical_map}`}>
                 {/* <MapboxMap/> */}
-                <LocationMap />
+                {/* <LocationMap /> */}
                 {/* <LeafletMap/> */}
             </div>                
         </div>

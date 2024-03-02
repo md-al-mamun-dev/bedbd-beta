@@ -1,7 +1,10 @@
 export const store = {
-    account:{
-        
-    },
+    account:{},
     userTermsAndConditions:[],
-    registration:{}
+    registration:{},
+    property:{
+        propertyTypes:[],
+        selectedPropertyType:'',
+        selectedBookingType:[]
+    },
 };

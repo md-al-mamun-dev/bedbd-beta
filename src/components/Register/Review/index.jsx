@@ -15,6 +15,8 @@ export default function Review({data, prevStep, nextStep}) {
   const dispatch = useRegistrationDispatch()
   const regData = useRegistration()
   const [formData, setFormData] = useState({  name: '' ,
+                                              email: '' ,
+                                              phone: '' ,
                                               prefs: {       idNumber: '',
                                                           fathersName: '',
                                                           mothersName: '',
@@ -40,7 +42,7 @@ useEffect(()=>{
 //     }
 //   }
 //   return () => { ignore = true };
-// }, [data])                                            
+// }, [data])
 
 function onFormDataChange(inputValue, fieldName) {
 
@@ -112,9 +114,10 @@ function onFormDataChange(inputValue, fieldName) {
     console.log(regData['prefs'])
     dispatch({ type:'registration/update', data: formData })
 
-
     const __formData = new FormData()
     __formData.append(                'name', regData['name'])
+    __formData.append(               'email', regData['email'])
+    __formData.append(               'phone', regData['phone'])
     __formData.append(            'idNumber', regData['prefs']['idNumber'])
     __formData.append(         'fathersName', regData['prefs']['fathersName'])
     __formData.append(         'mothersName', regData['prefs']['mothersName'])

@@ -1,4 +1,4 @@
-import { ID, Account, Teams,  } from "appwrite";
+import { ID, Account, Teams, Locale } from "appwrite";
 // import { account } from "./config";
 // import account from "./config";
 import appwriteClient from "./config";
@@ -8,10 +8,12 @@ import appwriteClient from "./config";
 export class AccountService{
     account;
     teams;
+    locale;
 
     constructor(){
         this.account = new Account(appwriteClient)
         this.teams = new Teams(appwriteClient)
+        this.locale = new Locale(appwriteClient);
     }
 
     async createUserAccout(email, password){
@@ -270,6 +272,14 @@ export class AccountService{
             console.log('logout Error: ' + err)
         }
     }
+    async getUsersLocalInformation(){
+        try {
+            return await this.locale.get()
+        } catch (err) {
+            console.log('logout Error: ' + err)
+        }
+    }
+
 }
 
 const accountService = new AccountService()

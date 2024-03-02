@@ -1,19 +1,15 @@
-export default function accountReducers(initialData, {type, data}) {
+export default function propertyReducers(initialData, {type, data}) {
     switch (type) {
-        case "login": {
-            return {...initialData, ...data}
-          }
-        case 'update':{
-            if(data['prefs'])
-                return { 
-                            ...initialData, 
-                            ...data,
-                            prefs: {
-                                ...initialData['prefs'],
-                                ...data['prefs']
-                            }
-                        }
-            return { ...initialData, ...data }
+        // case "login": {
+        //     return {...initialData, ...data}
+        //   }
+        case 'property/addTypes':{
+            return { ...initialData, propertyTypes:data }
+        }
+        case 'property/select':{
+            return { ...initialData, selectedPropertyType:data }
+        }case 'property/addBookingType':{
+            return { ...initialData, selectedBookingType:data }
         }
 
         // case 'update-preferences':{

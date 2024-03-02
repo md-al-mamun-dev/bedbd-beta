@@ -3,6 +3,7 @@ import styles from './index.module.css'
 import React, { useRef, useEffect, useState } from 'react';
 import mapboxgl from '!mapbox-gl'; // eslint-disable-line import/no-webpack-loader-syntax
 import { Marker } from 'mapbox-gl';
+import 'mapbox-gl/dist/mapbox-gl.css'
 
 
 
