@@ -17,6 +17,7 @@ const SelectBookingType = ({previousPage, nextPage}) => {
                                                     },{ id:1,
                                                         title:'A private room',
                                                         description:'Guests can book a room within the property. There are common areas that are shared with either the host or other guests.' }])
+                                                        
     const [selectedTypes, setSelectedTypes] = useState([])                                                        
     const dispatch = usePropertyDispatch()
 

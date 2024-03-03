@@ -6,6 +6,9 @@ export default function propertyReducers(initialData, {type, data}) {
         case 'property/addTypes':{
             return { ...initialData, propertyTypes:data }
         }
+        case 'property/addFeatures':{
+            return { ...initialData, propertyFeatures:data }
+        }
         case 'property/select':{
             return { ...initialData, selectedPropertyType:data }
         }case 'property/addBookingType':{

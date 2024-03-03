@@ -9,9 +9,10 @@ export class ListingService{
     propertyTypesCollection;
     // termsConditionCollectionId
     constructor(){
-        this.databases                  = new Databases(appwriteClient)
-        this.bedbdDbId                  = conf.appwriteBedbdDatabaseId
-        this.propertyTypesCollection    = conf.propertyTypeCollectionId
+        this.databases                     = new Databases(appwriteClient)
+        this.bedbdDbId                     = conf.appwriteBedbdDatabaseId
+        this.propertyTypesCollection       = conf.propertyTypeCollectionId
+        this.propertyFeaturesCollection    = conf.propertyFeaturesCollectionId
     }
 
     
@@ -28,6 +29,24 @@ export class ListingService{
                                  typeDescription: i['typeDescription'],
                                             icon: i['icon'],
                                         iconType: i['iconType']      }))
+            // return data   
+        } catch (err) {
+            return false
+        }
+    }
+    async getPropertyFeatures(){
+        console.log('get-property-feature')
+        try {
+            const data =  await this.databases
+                                    .listDocuments(
+                                        this.bedbdDbId,
+                                        this.propertyFeaturesCollection)
+
+            return data['documents']
+                        .map(i=> ({           id: i['$id'],
+                                        typeName: i['title'],                                  
+                                 typeDescription: i['description'],
+                                  apartmentTypes: i['apartmentTypes']}))
             // return data   
         } catch (err) {
             return false

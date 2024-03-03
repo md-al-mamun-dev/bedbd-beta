@@ -1,5 +1,5 @@
 'use client'
-import styles from './index.module.css'
+import styles from './styles.module.css'
 import Image from 'next/image'
 import usePropertyTypes from '@/hooks/usePropertyTypes'
 
@@ -8,7 +8,9 @@ import { useEffect, useState } from 'react'
 import usePropertyDispatch from '@/context/property/usePropertyDispatch'
 import useProperty from '@/context/property/useProperty'
 
-const ListingType = ({ data, nextPage}) => {
+
+export default function ListingType() {
+    
     // const [apartmentTypes, setApartmentTypes] = useState([])
 
     const [selectedTypeId, setSelectedTypeId] = useState('')
@@ -20,53 +22,21 @@ const ListingType = ({ data, nextPage}) => {
 
     const dispatch = usePropertyDispatch()
 
+    function nextPage(){
+        console.log('next page')
+    }
+
+
+
     function onPropertyTypeClickHandlar(propertyTypeId) {
         setSelectedTypeId(propertyTypeId)
         dispatch({type:'property/select', data: propertyTypeId})
     }
 
-    // const apartmentTypes = [
-    //     {
-    //         id:0,
-    //         name:"Apartment",
-    //         icon:"icon_apartment.svg"
-    //     },
-    //     {
-    //         id: 1,
-    //         name:"House",
-    //         icon:"icon_house.svg"
-    //     },
-    //     {
-    //         id:2,
-    //         name:"Shard Room",
-    //         icon:"icon_shared_room.svg"
-    //     },
-    //     {
-    //         id: 3,
-    //         name:"Condons",
-    //         icon:"icon_condos.svg"
-    //     },
-    //     {
-    //         id: 4,
-    //         name:"Villa",
-    //         icon:"icon_villa.svg"
-    //     },
-    //     {
-    //         id: 5,
-    //         name:"Farmhouse",
-    //         icon:"icon_farmhouse.svg"
-    //     }
-    // ]
-
-// useEffect(()=>{ 
-//     let ignore = false
-    
-//     getPropertyTypes()
-//     return ()=> ignore = true
-// }, [])
 
 function onContinueBtnClickHandlar() {
     nextPage()
+    console.log('type')
 }
 
   return (
@@ -96,5 +66,3 @@ function onContinueBtnClickHandlar() {
         </div>
   )
 }
-
-export default ListingType

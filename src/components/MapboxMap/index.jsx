@@ -4,6 +4,9 @@ import React, { useRef, useEffect, useState } from 'react';
 import mapboxgl from '!mapbox-gl'; // eslint-disable-line import/no-webpack-loader-syntax
 import { Marker } from 'mapbox-gl';
 import 'mapbox-gl/dist/mapbox-gl.css'
+import { SearchBox } from '@mapbox/search-js-react';
+// import { SearchBox } from '@mapbox/search-js-react';
+
 
 
 
@@ -13,8 +16,7 @@ const MapboxMap = () => {
     // const [markerIcon, setMarkerIcon] = useState({url:'fabicon.svg'})
 
     // Variable need to put into Envirnment variable
-    // const API_KEY = process.env.APPWRITE_API_KEY
-    // const MAP_ID = process.env.NEXT_PUBLIC_GOOGLE_MAP_MAP_ID
+
 
     // const mapRef = useRef
     // const mapCenter = useMemo(()=>  ({lat: 23.811056, lng: 90.407608}), [])
@@ -48,7 +50,7 @@ const MapboxMap = () => {
     //   if (map.current) return; 
     //   map.current = new mapboxgl.Map({
     //   container: mapContainer.current,
-    //   style: 'mapbox://styles/mapbox/streets-v12',
+    //   style: 'mapbox://styles/mapbox/streets-v12',s
     //   center: [lng, lat],
     //   zoom: zoom      
     //   });     

@@ -28,13 +28,16 @@ const [pageState, setPageState] = useState('select-property-type')
         {/* { pageState === 'property-type-confirmation' && <ViewBasicInfo previousPage={()=>setPageState('select-property-type')}  nextPage={()=>setPageState('select-booking-type')}/>} */}
         {/* { pageState === 'select-booking-type' && <SelectBookingType previousPage={()=>setPageState('property-type-confirmation')} nextPage={()=>setPageState('property-details')} />} */}
 
-        {/* { pageState === 'property-type' && <ViewBasicInfo nextPage={()=>setPageState('scope')} />} */}
+        {/* { pageState === 'select-booking-type' && <SelectBookingType previousPage={()=>setPageState('property-type-confirmation')} nextPage={()=>setPageState('property-details')} />} */}
+
+        {/* { pageState === 'property-type' && <ViewBasicInfo previousPage={()=>setPageState('select-booking-type')} nextPage={()=>setPageState('scope')} />} */}
+
         {/* { pageState === 'scope' && <Scope nextPage={()=>setPageState('scope')} />} */}
         {/* <Scope nextPage={()=>setPageState('scope')} /> */}
 
-        {/* <PropertyDetails/> */}
+        <PropertyDetails/>
 
-        <PropertyLocation/>
+        {/* <PropertyLocation/> */}
         {/* <DescriptionInput/> */}
         {/* <ImageUpload/> */}
         {/* <SetRent/> */}

@@ -107,17 +107,17 @@ export default function PropertyLocation() {
                     value={query}
                     className='w-100 fs-regular mr-top-16px clr-neutral-500 border-neutral-500 p-16px-24px radius-8' type='text' placeholder="search or enter goole map link"/>
                 </div>
-                <div>
+                {/* <div>
                     <input className='w-100 fs-regular mr-top-16px clr-neutral-500 border-neutral-500 p-16px-24px radius-8' type='text' placeholder="Use current location"/>
-                </div>
+                </div> */}
                 {/* <div className='fs-200 p-l-24 mr-t-6px'>Choose a catchy title in 40 characters</div> */}
             </div>
             <div className='mr-top-24px mr-btm-40px'>
                 <p className="fs-200 mr-btm-4px">Or Drag the pin where is your property located.</p>
                 <div className="radius-4 w-600px h-370px relative">
-                    <GoogleMap/>
+                    {/* <GoogleMap/> */}
                     {/* <Mapbox/> */}
-                    {/* <GoogleLocationMap/> */}
+                    <GoogleLocationMap/>
                 </div>
             </div>
             <SwitchBtn/>
