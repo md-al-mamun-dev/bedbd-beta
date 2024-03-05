@@ -2,7 +2,6 @@ import { ID, Storage, Permission, Role, Databases, Query } from "appwrite";
 import conf from "@/conf/config";
 import appwriteClient from "./config";
 
-
 export class ListingService{
     databases;
     bedbdDbId;
@@ -35,7 +34,7 @@ export class ListingService{
         }
     }
     async getPropertyFeatures(){
-        console.log('get-property-feature')
+        // console.log('get-property-feature')
         try {
             const data =  await this.databases
                                     .listDocuments(
@@ -52,6 +51,24 @@ export class ListingService{
             return false
         }
     }
+    // async getCountryLis(){
+    //     // console.log('get-property-feature')
+    //     try {
+    //         const data =  await this.databases
+    //                                 .listDocuments(
+    //                                     this.bedbdDbId,
+    //                                     this.propertyFeaturesCollection)
+
+    //         return data['documents']
+    //                     .map(i=> ({           id: i['$id'],
+    //                                     typeName: i['title'],                                  
+    //                              typeDescription: i['description'],
+    //                               apartmentTypes: i['apartmentTypes']}))
+    //         // return data   
+    //     } catch (err) {
+    //         return false
+    //     }
+    // }
 }
 
 const listingService = new ListingService()

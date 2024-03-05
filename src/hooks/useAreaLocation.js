@@ -1,21 +1,24 @@
 import { useEffect, useState } from "react"
-import termsAndConditionService from "@/service/TermsAndConditionService";
-import { usePathname } from "next/navigation";
+// import termsAndConditionService from "@/service/TermsAndConditionService";
+// import { usePathname } from "next/navigation";
 import accountService from "@/service/AccountService";
+import localService from "@/service/LocalService";
 
 
 export default function useAreaLocation(){
     const [localData, setLocalData] =useState({})
-    const [location, setLocation] =useState([])
+    const [location, setLocation] =useState({})
+    console.log(localData)
+    console.log(location)
     // const ipToLocalKey = process.env.NEXT_PUBLIC_IPTO_LOCATION_KEY
     useEffect(()=>{
         let ignore = false
 
         if(!ignore){
             async function getUserLocalData(){
-                const data = await accountService.getUsersLocalInformation()
+                const data = await localService.getUsersLocalInformation()
                 if(data){
-                    console.log(data)
+                    // console.log(data)
                     setLocalData(data)
                 }
             }
@@ -41,15 +44,9 @@ export default function useAreaLocation(){
                 if(result){
                     const data = await result.json()
                     if(data)
-                        setLocation({longitude:data['longitude'], latitude:data['latitude'] })
-                    console.log(data)
+                        setLocation(data)
                     }
-
                 }
-
-                
-                //   console.log(response)
-
             }
             console.log(localData['ip'])
             getLocationFromIp()

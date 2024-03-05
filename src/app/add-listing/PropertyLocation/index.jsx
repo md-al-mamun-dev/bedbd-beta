@@ -9,6 +9,8 @@ import usePlacesAutocomplete from "use-places-autocomplete"
 import { Combobox, ComboboxInput, ComboboxPopover, ComboboxList, ComboboxOption } from "@reach/combobox"
 import Geocode , {setKey, setDefaults} from "react-geocode"
 import { useEffect, useRef, useState } from "react"
+import useAreaLocation from "@/hooks/useAreaLocation"
+import usePropertyDispatch from "@/context/property/usePropertyDispatch"
 
 let autoComplete;
 
@@ -31,15 +33,20 @@ const loadScript = (url, callback) => {
     document.getElementsByTagName("head")[0].appendChild(script);
   };
 
-
-
 setDefaults({
     key: process.env.NEXT_PUBLIC_GOOGLE_MAP_API_KEY, // Your API key here.
     language: "en", // Default language for responses.
     region: "es", // Default region for responses.
   });
 
-export default function PropertyLocation() {
+export default function PropertyLocation({ nextPage, previousPage }) {
+  const dispatch = usePropertyDispatch()
+
+  const [currentLocation, setCurrentLocation] = useState({lat:0.00,  lng:0.00})
+
+  const {localInfo, location} = useAreaLocation()
+  console.log(localInfo)
+  console.log(location)
 
     const [query, setQuery] = useState("");
     const autoCompleteRef = useRef(null)
@@ -57,7 +64,9 @@ export default function PropertyLocation() {
           handlePlaceSelect(updateQuery);
         });
       };
-      const handlePlaceSelect = async (updateQuery) => {
+
+
+  const handlePlaceSelect = async (updateQuery) => {
         const addressObject = await autoComplete.getPlace();
     
         const query = addressObject.formatted_address;
@@ -70,7 +79,7 @@ export default function PropertyLocation() {
         };
     
         console.log({ latLng });
-        setSelectedLocation(latLng);
+        // setSelectedLocation(latLng);
       };
 
     // const handleScriptLoad = (updatequery, autoCompleteRef)=>{
@@ -91,7 +100,13 @@ export default function PropertyLocation() {
         )
     }, [])
 
-    
+    function onContinueBtnClickHandlar() {
+      dispatch({type:'property/country', data:localInfo['country'] })
+      dispatch({type:'property/city', data:location['city_name'] })
+      dispatch({type:'property/timezone', data:location['time_zone'] })
+      dispatch({type:'property/zipCode', data:location['zip_code'] })
+      dispatch({type:'property/location', data:currentLocation })
+    }
 
 
   return (
@@ -117,10 +132,10 @@ export default function PropertyLocation() {
                 <div className="radius-4 w-600px h-370px relative">
                     {/* <GoogleMap/> */}
                     {/* <Mapbox/> */}
-                    <GoogleLocationMap/>
+                    <GoogleLocationMap data={location} setCurrentLocation={setCurrentLocation} />
                 </div>
             </div>
-            <SwitchBtn/>
+            <SwitchBtn previousPage={previousPage} nextPage={onContinueBtnClickHandlar} />
         </div>        
     </div>
   )

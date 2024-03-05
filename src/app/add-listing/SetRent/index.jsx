@@ -7,8 +7,9 @@ import Image from 'next/image'
 // import LucidIcon from '@/components/LucidIcon'
 import { Minus, Plus } from 'lucide-react'
 import { useEffect, useState } from 'react'
+import usePropertyDispatch from '@/context/property/usePropertyDispatch'
 
-const SetRent = () => {
+const SetRent = ({ nextPage, previousPage}) => {
 const [currencySymbol, setCurrencySymbol] = useState('$')
 const [rent, setRent] = useState(21)
 const [minRent, setMinRent] = useState(3)
@@ -16,6 +17,7 @@ const [minRent, setMinRent] = useState(3)
 const [serviceFee, setServiceFee] = useState(2)
 const [tax, setTax] = useState(1)
 
+const dispatch = usePropertyDispatch()
 
 
 
@@ -49,11 +51,21 @@ useEffect(() => {
 }, [rent]);
 
 
+function onContinueBtnClick() {
+  dispatch({type:'property/rentInfo', data:{
+    rent:rent,
+    tax:tax,
+    serviceFee:serviceFee,
+    currency:currencySymbol
+  }})
+}
+
+
 
 
 
   return (
-    <div className={`contents ${styles.rent_content}`}>
+    <div className={`contents absolute left-50 ${styles.rent_content}`}>
         <h3 className={`text-select-none ${styles.heading}`}>Set Price</h3>
 
         <h4 className={`text-select-none ${styles.pricing_q}`}>How much do you want to charge per night?</h4>
@@ -64,7 +76,7 @@ useEffect(() => {
             <Minus className={`${styles.icon_minus} `} size={32}/>
             {/* <LucidIcon name={'minus'} className={`${styles.icon_minus} `} size={32} /> */}
           </button>
-          <input type='text' className={`${styles.rent_input}`} size={inputFieldSize} value={currencySymbol + rent} onChange={onRentValueChange} />
+          <input type='text' className={`${styles.rent_input} clr-secondary-400`} size={inputFieldSize} value={currencySymbol + rent} onChange={onRentValueChange} />
 
           <button onClick={incrementRent}>
             <Plus className={`${styles.icon_plus} `} size={32} />
@@ -73,7 +85,7 @@ useEffect(() => {
 
         </div>
 
-        <div className={`text-select-none ${styles.pricing_details}`}>
+        <div className={`text-select-none ${styles.pricing_details} clr-neutral-500`}>
 
           <div className={`${styles._wrapper}`}>
             <div className={`${styles.pricing_item}`}>
@@ -88,38 +100,38 @@ useEffect(() => {
           </div>
           
           <div className={`${styles._wrapper}`}>
-            <div className={`${styles.pricing_item}`}>
-              <div className={`${styles.price_name}`}>
+            <div className={`${styles.pricing_item} `}>
+              <div className={`${styles.price_name} `}>
               Service Fee
               </div>
 
-              <div className={`${styles.value}`}>
+              <div className={`${styles.value} `}>
                 {currencySymbol + serviceFee} 
               </div>
             </div>
           </div>
 
           <div className={`${styles._wrapper}`}>
-            <div className={`${styles.pricing_item}`}>
-              <div className={`${styles.price_name}`}>
+            <div className={`${styles.pricing_item} `}>
+              <div className={`${styles.price_name} `}>
               Taxes
               </div>
 
-              <div className={`${styles.value}`}>
+              <div className={`${styles.value} `}>
                 {currencySymbol + tax} 
               </div>
             </div>
           </div>
 
           <div className={`${styles._wrapper}`}>
-            <div className={`${styles.pricing_item}`}>
-            <div className={`${styles.price_name}`}>
-              You will earn
-            </div>
+            <div className={`${styles.pricing_item} clr-secondary-400 fw-regular-dark`}>
+              <div className={`${styles.price_name} `}>
+                You will earn
+              </div>
 
-            <div className={`${styles.value}`}>
-              {currencySymbol + rent} 
-            </div>
+              <div className={`${styles.value}`}>
+                {currencySymbol + rent} 
+              </div>
             </div>
           </div>
 
@@ -130,7 +142,7 @@ useEffect(() => {
         </p>
 
         
-        <SwitchBtn/>
+        <SwitchBtn previousPage={previousPage} nextPage={onContinueBtnClick}/>
     </div>
   )
 }

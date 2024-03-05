@@ -2,13 +2,13 @@
 import { useLoadScript } from '@react-google-maps/api';
 import { GoogleMap, Marker, Circle, MarkerClusterer } from '@react-google-maps/api';
 import { useCallback, useEffect, useMemo, useRef, useState } from 'react';
-import useAreaLocation from '@/hooks/useAreaLocation';
+// import useAreaLocation from '@/hooks/useAreaLocation';
 
-const GoogleLocationMap = () => {
+const GoogleLocationMap = ({data, setCurrentLocation}) => {
   const [getDeviceLocation, setGetDeviceLocation] = useState(false)
-  const [mapCenter, setMapCenter] = useState({lat: 23.811056, lng: 90.407608})
+  const [mapCenter, setMapCenter] = useState({lng:data['longitude'], lat:data['latitude'] })
 
-    const {localInfo, location} = useAreaLocation()
+    // const {localInfo, location} = useAreaLocation()
     
     const mapRef = useRef(null)
     const onLoad = useCallback(map => (mapRef.current = map), [])
@@ -42,6 +42,10 @@ useEffect(()=>{
                   lat: position.coords.latitude,
                   lng: position.coords.longitude 
                 }));
+                setCurrentLocation({
+                  lat: position.coords.latitude,
+                  lng: position.coords.longitude 
+                })
             }
         )
     }
@@ -78,6 +82,7 @@ useEffect(()=>{
         editable: false,
         visible: true,
       };
+
       const closeOptions = {
       ...defaultOptions,
       zIndex: 3,
@@ -109,7 +114,7 @@ useEffect(()=>{
         // maxZoom:fixedZoomLevel,
         minZoom:7, 
         draggable: true,
-        mapId: "2459d1fbcf391924",
+        mapId: process.env.NEXT_PUBLIC_GOOGLE_MAP_MAP_ID,
     }), [])  
 
     if(!isLoaded) return <div>Loading...</div>
@@ -119,13 +124,13 @@ useEffect(()=>{
 
       const lat = e.latLng.lat()
       const lng = e.latLng.lng()
-
+      setCurrentLocation({lat:lat, lng:lng})
       console.log(lat)
       console.log(lng)
 
     }
 
-    return (<GoogleMap  zoom={15} 
+    return (<GoogleMap  zoom={16} 
                         center={mapCenter} 
                         options={mapOptions}
                         onLoad={onLoad}

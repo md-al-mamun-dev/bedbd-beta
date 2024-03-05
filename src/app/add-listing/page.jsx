@@ -6,6 +6,7 @@ import Scope from './SelectBookingType'
 import SelectBookingType from './SelectBookingType'
 import ViewBasicInfo from './ViewBasicInfo'
 import DescriptionInput from './DescriptionInput'
+import LocationConfirmation from './LocationConfirmation'
 import ImageUpload from './ImageUpload'
 import SetRent from './SetRent'
 import PropertyProvider from '@/context/property/propertyContext'
@@ -13,6 +14,8 @@ import { useState } from 'react'
 import useProperty from '@/context/property/useProperty'
 import PropertyDetails from './PropertyDetails'
 import PropertyLocation from './PropertyLocation'
+import AccommodationDetails from './AccommodationDetails'
+import HomeRules from './HomeRules'
 
 
 
@@ -35,12 +38,23 @@ const [pageState, setPageState] = useState('select-property-type')
         {/* { pageState === 'scope' && <Scope nextPage={()=>setPageState('scope')} />} */}
         {/* <Scope nextPage={()=>setPageState('scope')} /> */}
 
-        <PropertyDetails/>
+        {/* property-details */}
+        {/* <PropertyDetails nextPage={()=>setPageState('property-location ')} previousPage={()=>setPageState('select-booking-type')} /> */}
 
-        {/* <PropertyLocation/> */}
+        {/* property-location */}
+        {/* <PropertyLocation nextPage={()=>setPageState('property-details')} previousPage={()=>setPageState('location-confirmation')} /> */}
+
+        {/* <LocationConfirmation nextPage={()=>setPageState('property-details')} previousPage={()=>setPageState('location-confirmation')}/> */}
+
+
+        {/* <AccommodationDetails nextPage={()=>setPageState('property-details')} previousPage={()=>setPageState('location-confirmation')}/> */}
+
+        {/* <HomeRules nextPage={()=>setPageState('property-details')} previousPage={()=>setPageState('location-confirmation')}/> */}
+
         {/* <DescriptionInput/> */}
-        {/* <ImageUpload/> */}
-        {/* <SetRent/> */}
+
+        {/* <ImageUpload nextPage={()=>setPageState('property-details')} previousPage={()=>setPageState('location-confirmation')}/> */}
+        <SetRent nextPage={()=>setPageState('property-details')} previousPage={()=>setPageState('location-confirmation')}/>
       </div>
     {/* <div className={`${styles.contents_container}`}> */}
 

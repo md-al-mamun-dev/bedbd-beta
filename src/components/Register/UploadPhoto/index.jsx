@@ -31,8 +31,6 @@ export default function UploadPhoto({data, formState, prevStep, nextStep}) {
             setImageFile(registrationData['prefs']['verificationDocBack'])
         if(Object(registrationData['prefs']).hasOwnProperty('verificationDocType'))
             setVerifiactonDocumentType(registrationData['prefs']['verificationDocType'])
-
-
         console.log(registrationData)
         console.log(verifiactonDocumentType)
 

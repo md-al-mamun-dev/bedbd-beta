@@ -46,7 +46,7 @@
     padding: var(--size-025) var(--size-350);
     text-align: center;
     border-radius: var(--size-080);
-    color: var(--clr-neutral-600);
+    /* color: var(--clr-neutral-600); */
     font-size: var(--fs-1000);
     font-weight: var(--fw-semi-bold);
     letter-spacing: 7.76px;
@@ -91,7 +91,7 @@
     padding-top: var(--size-080);
     padding-bottom: var(--size-080);
     letter-spacing: 0.16px;
-    color: var(--clr-neutral-500);
+    /* color: var(--clr-neutral-500); */
 }
 
 .pricing_details > ._wrapper > .pricing_item > .price_name{
@@ -108,11 +108,11 @@
 }
 
 .pricing_details > ._wrapper:last-child > .pricing_item > .price_name{
-    color: var(--clr-neutral-700);
+    /* color: var(--clr-neutral-700); */
 }
 
 .pricing_details > ._wrapper:last-child > .pricing_item > .value{
-    color: var(--clr-neutral-800);
+    /* color: var(--clr-neutral-800); */
     letter-spacing: 0.36px;
 }
 

@@ -110,6 +110,7 @@
 }
 .uploaded_images > .image_wrapper > img{
     border-radius: var(--size-080);
+    object-fit: cover;
     z-index: -1;
 }
 .uploaded_images > .image_wrapper > .drop_img_btn{

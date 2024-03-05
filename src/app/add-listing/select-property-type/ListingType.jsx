@@ -9,10 +9,7 @@ import usePropertyDispatch from '@/context/property/usePropertyDispatch'
 import useProperty from '@/context/property/useProperty'
 
 
-export default function ListingType() {
-    
-    // const [apartmentTypes, setApartmentTypes] = useState([])
-
+export default function ListingType() {    
     const [selectedTypeId, setSelectedTypeId] = useState('')
     const { propertyTypes, isLoading } = usePropertyTypes()
 
