@@ -12,6 +12,11 @@ const conf = {
 
                appwriteUserVerificationInfoCollectionId: String(process.env.NEXT_PUBLIC_APPWRITE_COLLECTION_USER_VERFIFICATION_INFO_COLLECTION_ID),
                            propertyFeaturesCollectionId: String(process.env.NEXT_PUBLIC_APPWRITE_PROPERTY_FEATURES_COLLECTION_ID),
+                                  amenitiesCollectionId: String(process.env.NEXT_PUBLIC_APPWRITE_AMENITIES_COLLECTION_ID),
+
+
+
+                        //    NEXT_PUBLIC_APPWRITE_AMENITIES_COLLECTION_ID
 
     // appwriteDbBedBdId: String(process.env.NEXT_PUBLIC_APPWRITE_USER_VERFIFICATION_FILE_BUCKET_ID),
 

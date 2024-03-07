@@ -113,7 +113,19 @@ export default function propertyReducers(initialData, {type, data}) {
         case 'property/rentInfo':{
             return { ...initialData, rentInfo:data }
         }
-        
+
+
+        case 'property/amenities':{
+            return { ...initialData, amenities:data }
+        }
+        case 'property/addSelectedAmenities':{
+            return { ...initialData, selectedAmenities:[ ...initialData['selectedAmenities'], data] }
+        }
+        case 'property/removeSelectedAmenities':{
+            return { ...initialData, selectedAmenities:initialData['selectedAmenities'].filter(i=>i!==data) }
+        }
+        // selectedAmenities
+        // amenities
 
         // case 'update-preferences':{
         //     return {

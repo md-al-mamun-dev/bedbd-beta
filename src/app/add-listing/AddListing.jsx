@@ -21,12 +21,13 @@ import Approving from './Approving'
 import TermsConditions from './TermsConditions'
 import Congrats from './Congrats'
 import useProperty from '@/context/property/useProperty'
+import Amenities from './Amenities'
 
 
 
 
 const AddListing = () => {
-const [pageState, setPageState] = useState('select-property-type')
+const [pageState, setPageState] = useState('amenities')
 
 const property = useProperty()
 console.log(property)
@@ -75,9 +76,16 @@ console.log(property)
         }
         {pageState === 'accommodation-details'
                       && <AccommodationDetails 
-                          nextPage={()=>setPageState('property-details')} 
+                          nextPage={()=>setPageState('amenities')} 
                           previousPage={()=>setPageState('location-confirmation')}/>
-        }        
+        }   
+        {
+          pageState === 'amenities'
+                      && <Amenities 
+                          data={property} 
+                          nextPage={()=>setPageState('amenities')} 
+                          previousPage={()=>setPageState('accommodation-details')} />
+        }     
 
         {/* <LocationConfirmation nextPage={()=>setPageState('property-details')} previousPage={()=>setPageState('location-confirmation')}/> */}
 

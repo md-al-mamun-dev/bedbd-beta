@@ -64,9 +64,9 @@ export default function AccommodationDetails({nextPage, previousPage}) {
                                                 ])                                                
 
     function onContinueBtnClick() {
-        dispatch({type:'property/roomCount', data: roomCount.filter(i=>i[count]>0)})
-        dispatch({type:'property/bedCount', data: bedCount.filter(i=>i[count]>0)})
-        dispatch({type:'property/guestCount', data: guestCount.filter(i=>i[count]>0)})        
+        dispatch({type:'property/roomCount', data: roomCount.filter(i=>i['count']>0)})
+        dispatch({type:'property/bedCount', data: bedCount.filter(i=>i['count']>0)})
+        dispatch({type:'property/guestCount', data: guestCount.filter(i=>i['count']>0)})        
         nextPage()
     }
 

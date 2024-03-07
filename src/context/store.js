@@ -42,6 +42,9 @@ export const store = {
         
         propertyDescription:'',
         images:[],
-        rentInfo:{}
+        rentInfo:{},
+
+        amenities:[],
+        selectedAmenities:[]
     },
 };

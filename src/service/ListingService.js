@@ -6,12 +6,14 @@ export class ListingService{
     databases;
     bedbdDbId;
     propertyTypesCollection;
+    propertyAmenitiesCollection
     // termsConditionCollectionId
     constructor(){
         this.databases                     = new Databases(appwriteClient)
         this.bedbdDbId                     = conf.appwriteBedbdDatabaseId
         this.propertyTypesCollection       = conf.propertyTypeCollectionId
         this.propertyFeaturesCollection    = conf.propertyFeaturesCollectionId
+        this.amenitiesCollection           = conf.amenitiesCollectionId
     }
 
     
@@ -46,6 +48,25 @@ export class ListingService{
                                            title: i['title'],                                  
                                      description: i['description'],
                                   apartmentTypes: i['apartmentTypes']}))
+            // return data   
+        } catch (err) {
+            return false
+        }
+    }
+    async getAmenities(){
+        // console.log('get-property-feature')
+        try {
+            const data =  await this.databases
+                                    .listDocuments(
+                                        this.bedbdDbId,
+                                        this.amenitiesCollection)
+
+            return data['documents']
+                        .map(i=> ({           id: i['$id'],
+                                           title: i['title'],                                  
+                                     description: i['description'],
+                                            icon: i['icon'],
+                                        category: i['category']}))
             // return data   
         } catch (err) {
             return false
