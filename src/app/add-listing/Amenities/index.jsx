@@ -4,6 +4,7 @@ import Heading from '../Heading'
 import SwitchBtn from '../SwitchBtn'
 import LucidIcon from '@/components/LucidIcon'
 import usePropertyDispatch from '@/context/property/usePropertyDispatch'
+import conventionToNormalText from '@/components/Utility/conventionToNormalText'
 
 export default function Amenities({data, nextPage, previousPage}) {
   const { isLoading } = useAmenities()
@@ -20,26 +21,15 @@ useEffect(()=>{
         result[category].push(rest);
         return result;
     }, {}))
-  }
-  
+  }  
 }, [amenitiesData])
 
-useEffect(()=>{
-  console.log(amenities)
-}, [amenities])
 
-  function onContinueBtnClick(params) {
-    
-  }
-  function formatText(text) {
-    const words = text.replace(/[_-]/g, ' ').split(/\s+/);  
-    const formattedWords = words.map(word => word.charAt(0).toUpperCase() + word.slice(1).toLowerCase());
-    return formattedWords.join(' ');
-  }
 
   function toggleAmenitiesSelection(id) {
-    dispatch({type:'property/addSelectedAmenities', data: id})
-    console.log(id)
+    data['selectedAmenities'].includes(id)
+      ? dispatch({type:'property/removeSelectedAmenities', data: id})
+      : dispatch({type:'property/addSelectedAmenities', data: id})      
   }
 
   return (
@@ -52,30 +42,29 @@ useEffect(()=>{
                 isLoading
                   ? <div>Loading...</div>
                   : Object.keys(amenities).map( itemKey =>{
-                      const catagory = formatText(itemKey)
+                      const catagory = conventionToNormalText(itemKey)
                       return (<div className=' w-fit-content '>
                       <h3 className='clr-neutral-600 fs-600 fw-regular-dark'>{catagory}</h3>
                       <div className='grid gap-16px mr-top-12px'>
                         {
                           amenities[itemKey].map(item => {
                               const isSelected  = data['selectedAmenities'].includes(item['id'])
-
-                                return (<div className='flex flex-align-center gap-8px'>
-                                    <button 
-                                      onClick={()=>toggleAmenitiesSelection(item['id'])}
-                                      className='no-border bg-transparent no-outline'>
-                                      <LucidIcon name={isSelected ? 'check-square' : 'square'} size={24}/>
-                                    </button>
-                                    {item['title']}
-                                  </div>)})
-                        }
+                                return (<button 
+                                          onClick={()=>toggleAmenitiesSelection(item['id'])}
+                                          className='no-border bg-transparent no-outline flex flex-align-center gap-8px cursor-pointer'>
+                                          <div className='min-w-24px'>
+                                            <LucidIcon className='opacity-0_70 ' name={isSelected ? 'check-square' : 'square'} size={24}/>
+                                          </div>
+                                          {item['title']}
+                                        </button>)})
+                        }                    
                       </div>
                     </div>)
                     } )
               }
 
             </div>            
-            <SwitchBtn previousPage={previousPage}/>
+            <SwitchBtn nextPage={nextPage} previousPage={previousPage}/>
         </div>
     </div>
   )

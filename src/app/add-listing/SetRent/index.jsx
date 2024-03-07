@@ -9,7 +9,8 @@ import { Minus, Plus } from 'lucide-react'
 import { useEffect, useState } from 'react'
 import usePropertyDispatch from '@/context/property/usePropertyDispatch'
 
-const SetRent = ({ nextPage, previousPage}) => {
+const SetRent = ({data, nextPage, previousPage}) => {
+  console.log(data)
 const [currencySymbol, setCurrencySymbol] = useState('$')
 const [rent, setRent] = useState(21)
 const [minRent, setMinRent] = useState(3)
@@ -58,6 +59,9 @@ function onContinueBtnClick() {
     serviceFee:serviceFee,
     currency:currencySymbol
   }})
+  nextPage()
+
+  console.log(data)
 }
 
 

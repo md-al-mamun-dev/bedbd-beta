@@ -36,15 +36,28 @@ export const store = {
         roomCount:[],
         bedCount:[],
         guestCount:[],
+
         homeRules:[],
+        selectedHomeRules:[],
+
         checkInTime:[],
         checkOutTime:[],
         
         propertyDescription:'',
         images:[],
         rentInfo:{},
-
         amenities:[],
-        selectedAmenities:[]
+        selectedAmenities:[],
+        availability:{
+            checkIn:'',
+            monthExtendStay:'',
+            rebookAfterTimeFrame:''
+        },
+        approvingMethod:'',
+        genderPref:'',
+        termsConditions:{
+            legitimateDeclaration:false,
+            readTermsCondition:false
+        }
     },
 };

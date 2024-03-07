@@ -68,24 +68,76 @@ console.log(property)
                           nextPage={()=>setPageState('location-confirmation')} 
                           previousPage={()=>setPageState('property-details')} />
         }
-        {pageState === 'location-confirmation'
+        { pageState === 'location-confirmation'
                       && <LocationConfirmation 
                           data={property}
                           nextPage={()=>setPageState('accommodation-details')} 
                           previousPage={()=>setPageState('location-confirmation')}/>
         }
-        {pageState === 'accommodation-details'
+        { pageState === 'accommodation-details'
                       && <AccommodationDetails 
                           nextPage={()=>setPageState('amenities')} 
                           previousPage={()=>setPageState('location-confirmation')}/>
         }   
-        {
-          pageState === 'amenities'
+        { pageState === 'amenities'
                       && <Amenities 
                           data={property} 
-                          nextPage={()=>setPageState('amenities')} 
+                          nextPage={()=>setPageState('home-rules')} 
                           previousPage={()=>setPageState('accommodation-details')} />
         }     
+
+        { pageState === 'home-rules'
+                      &&  <HomeRules 
+                            data={property} 
+                            nextPage={()=>setPageState('upload-image')} 
+                            previousPage={()=>setPageState('amenities')}/>}
+
+        {
+          pageState === 'upload-image'
+                      && <ImageUpload 
+                          data={property}
+                          nextPage={()=>setPageState('set-rent')} 
+                          previousPage={()=>setPageState('home-rules')}/>
+
+        }
+        {
+          pageState === 'set-rent'
+                      && <SetRent 
+                          data={property}
+                          nextPage={()=>setPageState('availability')} 
+                          previousPage={()=>setPageState('upload-image')}/>
+
+        }
+        {
+          pageState === 'availability'
+                      && <Availability 
+                          data={property}
+                          nextPage={()=>setPageState('approving')} 
+                          previousPage={()=>setPageState('set-rent')}/>
+
+        }
+        { pageState === 'approving' 
+                      && <Approving 
+                          data={property}
+                          nextPage={()=>setPageState('terms-conditions')} 
+                          previousPage={()=>setPageState('availability')}/>
+        }
+        {
+          pageState === 'terms-conditions'
+                      && <TermsConditions 
+                          data={property}
+                          nextPage={()=>setPageState('congrats')} 
+                          previousPage={()=>setPageState('approving')}/>
+
+        }
+          {
+            pageState === 'congrats'
+                      && <Congrats data={property}/>
+ 
+          }
+
+        
+
 
         {/* <LocationConfirmation nextPage={()=>setPageState('property-details')} previousPage={()=>setPageState('location-confirmation')}/> */}
 

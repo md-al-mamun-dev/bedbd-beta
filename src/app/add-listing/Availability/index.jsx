@@ -1,10 +1,13 @@
 import SwitchBtn from "../SwitchBtn"
 import { useState } from "react";
+import usePropertyDispatch from "@/context/property/usePropertyDispatch";
 
-export default function Availability() {
+export default function Availability({data, nextPage, previousPage }) {
     const [checkInPossibility, setCheckInPossibility] = useState('');
     const [allowMoreThanMonth, setAllowMoreThanMonth] = useState('');
     const [isBookingExtend, setIsBookingExtend] = useState('');
+
+    const dispatch = usePropertyDispatch()
 
     const handleCheckInPossibilityChange = (e) => {
         setCheckInPossibility(e.target.value);
@@ -16,6 +19,19 @@ export default function Availability() {
     const handleIsBookingExtendChange = (e) => {
     setIsBookingExtend(e.target.value);
     };
+
+    function onContinueBtnClick() {
+        // const newValue = {
+        //                     checkIn:checkInPossibility,
+        //                     monthExtendStay:allowMoreThanMonth,
+        //                     rebookAfterTimeFrame:isBookingExtend
+        //                 }
+        dispatch({type:'property/availability', data: { checkIn:checkInPossibility,
+                                                        monthExtendStay:allowMoreThanMonth,
+                                                        rebookAfterTimeFrame:isBookingExtend  }})
+        nextPage()
+        
+    }
   return (
     <div className='w-100 h-max-content absolute-h-center top-0 max-width-1280 '>
         <div className='max-w-600px mr-l-auto mr-r-auto p-btm-80px p-top-56px'>
@@ -76,7 +92,7 @@ export default function Availability() {
 
             
             {/* nextPage={onContinueBtnClick} previousPage={previousPage}   */}
-            <SwitchBtn/>
+            <SwitchBtn nextPage={onContinueBtnClick} previousPage={previousPage} />
         </div>
     </div>
   )

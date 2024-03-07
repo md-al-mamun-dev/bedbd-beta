@@ -124,6 +124,37 @@ export default function propertyReducers(initialData, {type, data}) {
         case 'property/removeSelectedAmenities':{
             return { ...initialData, selectedAmenities:initialData['selectedAmenities'].filter(i=>i!==data) }
         }
+        case 'property/homeRules':{
+            return { ...initialData, homeRules:data }
+        }
+        case 'property/addHomeRules':{
+            return { ...initialData, homeRules:[...initialData['homeRules'], data] }
+        }
+        // selectedHomeRules
+        case 'property/addSelectedHomeRules':{
+            return { ...initialData, selectedHomeRules:[ ...initialData['selectedHomeRules'], data] }
+        }
+        case 'property/removeSelectedHomeRules':{
+            return { ...initialData, selectedHomeRules:initialData['selectedHomeRules'].filter(i=>i!==data) }
+        }
+
+        case 'property/removeSelectedHomeRules':{
+            return { ...initialData, selectedHomeRules:initialData['selectedHomeRules'].filter(i=>i!==data) }
+        }
+        case 'property/availability':{
+            return { ...initialData, availability:data }
+        }
+
+        case 'property/approvingMethod':{
+            return { ...initialData, approvingMethod:data }
+        }
+        case 'property/genderPreference':{
+            return { ...initialData, genderPref:data }
+        }
+        case 'property/termsCondition':{
+            return { ...initialData, termsConditions:data }
+        }
+
         // selectedAmenities
         // amenities
 

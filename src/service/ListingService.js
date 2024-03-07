@@ -7,6 +7,7 @@ export class ListingService{
     bedbdDbId;
     propertyTypesCollection;
     propertyAmenitiesCollection
+    homeRulesCollection
     // termsConditionCollectionId
     constructor(){
         this.databases                     = new Databases(appwriteClient)
@@ -14,6 +15,7 @@ export class ListingService{
         this.propertyTypesCollection       = conf.propertyTypeCollectionId
         this.propertyFeaturesCollection    = conf.propertyFeaturesCollectionId
         this.amenitiesCollection           = conf.amenitiesCollectionId
+        this.homeRulesCollection           = conf.homeRulesCollectionId
     }
 
     
@@ -68,6 +70,22 @@ export class ListingService{
                                             icon: i['icon'],
                                         category: i['category']}))
             // return data   
+        } catch (err) {
+            return false
+        }
+    }
+    async getHomeRules(){
+        // console.log('get-property-feature')
+        try {
+            const data =  await this.databases
+                                    .listDocuments(
+                                        this.bedbdDbId,
+                                        this.homeRulesCollection)
+
+            return data['documents']
+                        .map(i=> ({           id: i['$id'],
+                                           title: i['title'],                                  
+                                     description: i['description']}))
         } catch (err) {
             return false
         }

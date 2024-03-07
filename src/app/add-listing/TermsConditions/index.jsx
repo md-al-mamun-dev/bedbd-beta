@@ -1,12 +1,20 @@
 import SwitchBtn from "../SwitchBtn"
 import { useState } from "react";
 import LucidIcon from "@/components/LucidIcon";
+import usePropertyDispatch from "@/context/property/usePropertyDispatch";
 
-export default function TermsConditions() {
+export default function TermsConditions({data, nextPage, previousPage }) {
     const [acceptLegitimateDeclaration, setAcceptLegitimateDeclaration] = useState(false)
     const [acceptReadTermsCondition, setAcceptReadTermsCondition] = useState(false)
+    const dispatch = usePropertyDispatch()
 
-
+    function onContinueBtnClick() {
+        dispatch({type:'property/termsCondition', data:{
+                                                        legitimateDeclaration:acceptLegitimateDeclaration,
+                                                        readTermsCondition:acceptReadTermsCondition
+                                                    } })
+        nextPage()
+    }
 
   return (
     <div className='w-100 h-max-content absolute-center top-0 max-width-1280 '>
@@ -47,8 +55,8 @@ export default function TermsConditions() {
 
 
             
-            {/* nextPage={onContinueBtnClick} previousPage={previousPage}   */}
-            <SwitchBtn/>
+            {/*   */}
+            <SwitchBtn nextPage={onContinueBtnClick} previousPage={previousPage} />
         </div>
     </div>
   )

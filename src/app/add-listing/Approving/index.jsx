@@ -1,8 +1,10 @@
 import SwitchBtn from "../SwitchBtn"
 import { useState } from "react";
 import LucidIcon from "@/components/LucidIcon";
+import usePropertyDispatch from "@/context/property/usePropertyDispatch";
 
-export default function Approving() {
+export default function Approving({data, previousPage, nextPage}) {
+    const dispatch = usePropertyDispatch()
     const [approvingMethod, setApprovingMethod] = useState('');
     const [genderPreference, setgenderPreference] = useState('');
     // const [isBookingExtend, setIsBookingExtend] = useState('');
@@ -14,6 +16,12 @@ export default function Approving() {
     const onGenderPreferenceChnageHandlar = (e) => {
         setgenderPreference(e.target.value);
     };
+
+    function onContinueBtnClick(params) {
+        dispatch({type:'property/approvingMethod', data:approvingMethod})
+        dispatch({type:'property/genderPreference', data:genderPreference})
+        nextPage()
+    }
 
     // const handleIsBookingExtendChange = (e) => {
     // setIsBookingExtend(e.target.value);
@@ -76,7 +84,7 @@ export default function Approving() {
 
             
             {/* nextPage={onContinueBtnClick} previousPage={previousPage}   */}
-            <SwitchBtn/>
+            <SwitchBtn nextPage={onContinueBtnClick} previousPage={previousPage} />
         </div>
     </div>
   )
