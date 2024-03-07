@@ -6,14 +6,62 @@ import LucidIcon from '@/components/LucidIcon'
 import copyToClipboard from '@/components/Utility/copyToClipboard'
 import useCountriesList from '@/hooks/useCountriesList'
 import { City } from 'country-state-city'
+import { timezone } from './timzoneList'
 
 
-export default function LocationConfirmation({nextPage, previousPage}) {
+export default function LocationConfirmation({data, nextPage, previousPage}) {
 
     const {isLoading:isCountriesLoading, countries:{countries}} = useCountriesList() || {}
     const [country, setCountry] = useState({name: '', code: ''})
-
     const [cities, setCities] = useState([])
+    const [city, setCity] = useState({ name:'', lng:'', lng:'' })
+    const [location, setLocation] = useState({lat:'', lng:''})
+    const [timeZone, setTimeZone] = useState('')
+    const [postZipCode, setPostZipCode] = useState('')
+    const [mapLink, setMapLink] = useState('')
+
+
+    // const {country:countryData, city:cityData, location:locationData, zipCode } = data 
+    
+
+    // const [city, setCity] = useState('')
+
+    
+
+
+
+    useEffect(()=>{
+        let ignore = false 
+
+        const {country, city, location, zipCode } = data 
+        if(!ignore){
+            console.log(data)
+            setCountry(country)
+            setCity(city)
+            setLocation(location)
+            // setTimeZone(timeZone+' '+city['name'])
+            setPostZipCode(zipCode)
+        }
+        
+        return ()=> ignore = true 
+    }, [data])
+    useEffect(()=>{
+        let ignore = false
+        if(!ignore){
+            setMapLink(`https://maps.google.com/?q=${location['lat']},${location['lng']}`)
+        }        
+        return ()=> ignore = true 
+    }, [location])
+
+    useEffect(()=>{
+        let ignore = false
+        const { city,  timeZone  } = data 
+        if(!ignore){
+            setTimeZone(timeZone+' '+city['name'])
+        }
+        
+        return ()=> ignore = true 
+    }, [data])
 
     useEffect(()=>{
         if(country['code'].length>0){
@@ -27,16 +75,13 @@ export default function LocationConfirmation({nextPage, previousPage}) {
     // console.log(countries)
     // const citiesOfCountry = City.getCitiesOfCountry('BD')
 
-    const [city, setCity] = useState({name:''})
     const [thana, setThana] = useState({name:''})
     const [district, setDistrict] = useState({name:''})
-    const [timeZone, setTimeZone] = useState('')
     const [address, setAddress] = useState({     aptFloor: '',
                                             streetAddress: '',
                                                addressOne: '',
                                                addressTwo: ''})
-    const [postZipCode, setPostZipCode] = useState('')
-    const [mapLink, setMapLink] = useState('https://www.google.com/maps/search/google+map/@23....')
+    
 
     function onCountryChangeHandlar(e) {
         setCountry(countries.find(i=>i['code']===e.target.value))
@@ -51,12 +96,13 @@ export default function LocationConfirmation({nextPage, previousPage}) {
     // const [propertyDescription, setPropertyDescription] = useState('')
 
     function onContinueBtnClick() {
+        console.log(timeZone)
         dispatch({type:'property/address',            data: address  })
         dispatch({type:'property/country',            data: country  })
         dispatch({type:'property/city',               data: city     })
         dispatch({type:'property/district',           data: district })
         dispatch({type:'property/thana',              data: thana    })
-        dispatch({type:'property/timeZone',           data: timeZone })
+        dispatch({type:'property/timezone',           data: timeZone })
         nextPage()
     }
 
@@ -123,7 +169,7 @@ export default function LocationConfirmation({nextPage, previousPage}) {
                             placeholder="City" name='city'/>
                         {/* <div className='position-relative mr-top-40px'>
                             <select 
-                                value={city}
+                                value={city['name]}
                                 onChange={e=>setCity(e.target.value)}
                                 className='w-100 fs-regular clr-neutral-500 border-neutral-500 p-16px-24px radius-8 bg-transparent' 
                                 placeholder="pls give a title">                        
@@ -169,13 +215,32 @@ export default function LocationConfirmation({nextPage, previousPage}) {
                             </select>
                             <LucidIcon className='position-absolute top-50 translateY-50 right-24px opacity-0_70 z-index-minus-1' name='chevron-down' size={24}/>
                         </div> */}
-                        
 
-                        <input 
-                            value={timeZone['name']}
-                            onChange={e=>setTimeZone({...timeZone, 'name':e.target.value })}
+                        <div className='position-relative mr-top-16px mr-btm-24px'>
+                            {   isCountriesLoading
+                                ? <div className=' w-100 fs-regular clr-neutral-500 border-neutral-500 p-16px-24px radius-8 bg-transparent'>Loading...</div>
+                                :   timezone?.length > 0
+                                    ?   <select 
+                                            onChange={e=> setTimeZone(e.target.value)}
+                                            value={timeZone}
+                                            className=' w-100 fs-regular clr-neutral-500 border-neutral-500 p-16px-24px radius-8 bg-transparent'>                                
+                                            <option value=''> select timezone  </option>
+                                            {
+                                                timezone.map(i => <option value={i['title']}>{i['title']}</option>)
+                                            }                                            
+                                        </select>
+                                    : <div className=' w-100 fs-regular clr-neutral-500 border-neutral-500 p-16px-24px radius-8 bg-transparent'>
+                                        something wrong!! no data found 
+                                        </div>
+                            }
+                            <LucidIcon className='position-absolute top-50 translateY-50 right-24px opacity-0_70 z-index-minus-1' name='chevron-down' size={24}/>
+                        </div>
+
+                        {/* <input 
+                            value={timeZone}
+                            onChange={e=>setTimeZone(e.target.value )}
                             className='w-100 fs-regular mr-top-16px clr-neutral-500 border-neutral-500 p-16px-24px radius-8' 
-                            placeholder="Timezone" name='timezone'/>
+                            placeholder="Timezone" name='timezone'/> */}
                         {/* <div className='position-relative mr-top-14px'>
                             <select 
                                 value={timeZone}

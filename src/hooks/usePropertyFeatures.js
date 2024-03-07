@@ -18,7 +18,7 @@ export default function usePropertyFeatures(){
                     const data =  await listingService.getPropertyFeatures()
                     if(data){
                         setPropertyFeatures( ()=> data)
-                        dispatch({ type:'property/addFeatures', data:data })
+                        dispatch({ type:'property/features', data:data })
                             setisLoading( ()=> false )
                     }
                 } catch (error) {

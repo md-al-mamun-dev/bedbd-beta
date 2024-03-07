@@ -4,6 +4,7 @@ import { Square, CheckSquare, Plus, ChevronLeft } from 'lucide-react'
 import Image from 'next/image'
 import SwitchBtn from '../SwitchBtn'
 import useProperty from '@/context/property/useProperty'
+import Heading from '../Heading'
 
 
 export default function ViewBasicInfo({previousPage, nextPage}) {
@@ -18,7 +19,8 @@ export default function ViewBasicInfo({previousPage, nextPage}) {
   
   return (
     <div className=' w-100 absolute-center max-width-1280'>
-        <h3 className={`${styles.heading}`}>You're Listing</h3>
+      <Heading txt={`You're Listing`} />
+        {/* <h3 className={`${styles.heading}`}>You're Listing</h3> */}
         
 
         <div className={`${styles.icon_wrapper}`}>          

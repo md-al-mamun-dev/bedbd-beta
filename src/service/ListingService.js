@@ -43,8 +43,8 @@ export class ListingService{
 
             return data['documents']
                         .map(i=> ({           id: i['$id'],
-                                        typeName: i['title'],                                  
-                                 typeDescription: i['description'],
+                                           title: i['title'],                                  
+                                     description: i['description'],
                                   apartmentTypes: i['apartmentTypes']}))
             // return data   
         } catch (err) {

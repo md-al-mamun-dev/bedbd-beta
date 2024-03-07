@@ -12,7 +12,7 @@
     /* border: 1px solid red; */
     /* margin-top: 122px; */
     width: fit-content;
-    margin: 122px auto 0px auto;
+    /* margin: 122px auto 0px auto; */
 }
 .scope_input > .scope_info_question{
     font-size: var(--fs-600);

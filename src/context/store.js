@@ -4,20 +4,33 @@ export const store = {
     registration:{},
     property:{  
         propertyTypes:[],
+        bookingTypes:[{     id:0,
+                            title:'Entire place',
+                            description:'Guests have access to the entire place and don’t have to share it with the host or other guests.'
+                        },{ id:1,
+                            title:'A private room',
+                            description:'Guests can book a room within the property. There are common areas that are shared with either the host or other guests.' }],
+        selectedBookingType:[],
+
         propertyFeatures:[],
+        selectedPropertyFeatures:[],
+
         countryList:[],
         selectedPropertyType:'',
-        selectedBookingType:[],
+        
         title:'',
         address:{   aptFloor: '', 
                     streetAddress: '', 
                     addressOne: '', 
                     addressTwo: ''},
-        country:{},
-        city:{},
+        // country:'',
+        // countryCode:'',
+
+        country:{name: '', code: ''},
+        city:{ name:'', lat:'', lng:'' },
         district:{},
         thana:{},
-        timeZone:{},
+        timeZone:'',
         zipCode:'',
         location:{},
         roomCount:[],
@@ -26,7 +39,7 @@ export const store = {
         homeRules:[],
         checkInTime:[],
         checkOutTime:[],
-        selectedPropertyFeatures:[],
+        
         propertyDescription:'',
         images:[],
         rentInfo:{}

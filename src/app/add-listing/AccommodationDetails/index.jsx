@@ -6,6 +6,7 @@ import copyToClipboard from '@/components/Utility/copyToClipboard'
 import useCountriesList from '@/hooks/useCountriesList'
 import { City } from 'country-state-city'
 import usePropertyDispatch from '@/context/property/usePropertyDispatch'
+import Heading from '../Heading'
 
 
 export default function AccommodationDetails({nextPage, previousPage}) {
@@ -66,7 +67,7 @@ export default function AccommodationDetails({nextPage, previousPage}) {
         dispatch({type:'property/roomCount', data: roomCount.filter(i=>i[count]>0)})
         dispatch({type:'property/bedCount', data: bedCount.filter(i=>i[count]>0)})
         dispatch({type:'property/guestCount', data: guestCount.filter(i=>i[count]>0)})        
-        nextPage
+        nextPage()
     }
 
     function onRoomCountIncrement(roomName){
@@ -106,11 +107,11 @@ export default function AccommodationDetails({nextPage, previousPage}) {
     
 
   return (
-    <div className='w-100 h-max-content absolute-h-center top-0 max-width-1280 '>
-        <div className='max-w-600px mr-l-auto mr-r-auto p-btm-80px p-top-56px'>
-            <div className=' mr-btm-36px'>
-                <h3 className=' clr-primary-400 txt-align-center fw-regular-dark fs-875'>Location confirmation</h3>
-                <div className='w-100 mr-top-48px'>
+    <div className='w-100 h-max-content absolute-h-center top-0 max-width-1280'>
+        <div className='max-w-600px mr-l-auto mr-r-auto p-btm-80px'>
+            <div className=''>
+                <Heading txt='Accommodation Details'/>
+                <div className='w-100 '>
                     <div>
                         <h2 className='clr-neutral-600 fs-600 radius-8 fs-600 fw-regular-dark'>Total Room</h2>
                         <div className='box-shadow-300 mr-top-16px p-top-8px p-btm-8px'>

@@ -6,34 +6,35 @@ import SwitchBtn from '../SwitchBtn'
 import BookingType from './bookingType'
 import AddBookingType from './AddBookingType'
 import usePropertyDispatch from '@/context/property/usePropertyDispatch'
+import Heading from '../Heading'
 
-const SelectBookingType = ({previousPage, nextPage}) => {
-
+export default function SelectBookingType({data, previousPage, nextPage}) {
     const [addBookingTypModalOpen, setAddBookingTypModalOpen] = useState(false)
-
-    const [bookingTypes, setBookingTypes] = useState([{ id:0,
-                                                        title:'Entire place',
-                                                        description:'Guests have access to the entire place and don’t have to share it with the host or other guests.'
-                                                    },{ id:1,
-                                                        title:'A private room',
-                                                        description:'Guests can book a room within the property. There are common areas that are shared with either the host or other guests.' }])
-                                                        
-    const [selectedTypes, setSelectedTypes] = useState([])                                                        
     const dispatch = usePropertyDispatch()
+    const { bookingTypes, selectedBookingType } = data
 
-    function addBookingType(title, description) {
-        const maxId = Math.max(...bookingTypes.map(item => item.id));
-        setBookingTypes([...bookingTypes, {id:(maxId+1), title, description}])
-    }
+    // const [bookingTypes, setBookingTypes] = useState([{ id:0,
+    //                                                     title:'Entire place',
+    //                                                     description:'Guests have access to the entire place and don’t have to share it with the host or other guests.'
+    //                                                 },{ id:1,
+    //                                                     title:'A private room',
+    //                                                     description:'Guests can book a room within the property. There are common areas that are shared with either the host or other guests.' }])
+                                                        
+    // const [selectedTypes, setSelectedTypes] = useState([])                                                        
+
+    // function addBookingType(title, description) {
+    //     const maxId = Math.max(...bookingTypes.map(item => item.id));
+    //     setSelectedTypes([...selectedTypes, title])
+    //     setBookingTypes([...bookingTypes, {id:(maxId+1), title, description}])
+    // }
     
-    function addRemoveBookingType(typeTitle) {
-        selectedTypes.includes(typeTitle)
-            ? setSelectedTypes(selectedTypes.filter(i=>i !== typeTitle))
-            : setSelectedTypes([...selectedTypes, typeTitle])
+    function toggleSelectedBookingType(id) {
+        selectedBookingType.includes(id)
+            ? dispatch({type:'property/removeSelectedBookingType', data: id})
+            : dispatch({type:'property/addSelectedBookingType', data: id})
     }
 
     function onContinueBtnClick() {
-        dispatch({type:'property/addBookingType', data: bookingTypes})
         nextPage()
     }
 
@@ -41,19 +42,21 @@ const SelectBookingType = ({previousPage, nextPage}) => {
   return (
     <>
         <div className='w-100 absolute-center max-width-1280 '>
-            <h3 className={`${styles.heading}`}>Booking Type</h3>
+            <Heading txt='Booking Type'/>
+            {/* <h3 className={`${styles.heading}`}>Booking Type</h3> */}
 
-            <div className={`${styles.scope_input}`}>
+            <div className={`${styles.scope_input} mr-l-auto mr-r-auto`}>
                 <h3 className={`${styles.scope_info_question}`}>What can guests book?</h3>
 
                 <div className={`${styles.socps}`}>
                     {
-                        bookingTypes.map(i=><BookingType data={i} isChecked={selectedTypes.includes(i['title'])} toggleSelection={addRemoveBookingType}/>)
+                        bookingTypes.map(i=><BookingType data={i} isChecked={selectedBookingType.includes(i['id'])} toggleSelection={()=>toggleSelectedBookingType(i['id'])}/>)
                     }
                 </div>
 
-                <button className={`${styles.add_more_btn}`} onClick={()=>setAddBookingTypModalOpen(true)}> 
-                    <LucidIcon name={'plus'} className={`${styles.icon} `} size={24} />
+                <button className={`clr-neutral-500 flex flex-align-center border-btm-500 bg-transparent cursor-pointer gap-8px fs-400 fw-regular mr-top-14px mr-btm-40px position-relative`} onClick={()=>setAddBookingTypModalOpen(true)}> 
+                    <LucidIcon name={'plus'} className={` opacity-0_70 `} size={24} />
+                    {/* left-16px position-absolute top-50 translateY-50 */}
                     Add more option
                 </button>
 
@@ -61,9 +64,8 @@ const SelectBookingType = ({previousPage, nextPage}) => {
             </div>
         </div>
 
-        { addBookingTypModalOpen && <AddBookingType closeModal={()=>setAddBookingTypModalOpen(false)} addBookingType={addBookingType}/>}
+        { addBookingTypModalOpen && <AddBookingType data={bookingTypes} closeModal={()=>setAddBookingTypModalOpen(false)} />}
     </>    
   )
 }
 
-export default SelectBookingType

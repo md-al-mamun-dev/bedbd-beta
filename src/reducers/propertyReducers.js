@@ -8,18 +8,50 @@ export default function propertyReducers(initialData, {type, data}) {
         }
         case 'property/select':{
             return { ...initialData, selectedPropertyType:data }
-        }case 'property/addBookingType':{
-            return { ...initialData, selectedBookingType:data }
         }
+
         case 'property/addTypes':{
             return { ...initialData, propertyTypes:data }
         }
-        case 'property/addFeatures':{
+
+        // Booking Type
+        case 'property/addBookingType':{
+            return { ...initialData, bookingTypes:[...initialData['bookingTypes'], data] }
+        }
+        // case 'property/selectedBookingType':{
+        //     return { ...initialData, selectedBookingType:data }
+        // }
+        case 'property/addSelectedBookingType':{
+            console.log(data)
+            return { ...initialData, selectedBookingType:[...initialData['selectedBookingType'], data] }
+        }
+        case 'property/removeSelectedBookingType':{
+            return { ...initialData, selectedBookingType: initialData['selectedBookingType'].filter(i=>i!==data) }
+        }
+
+
+        
+        case 'property/features':{
             return { ...initialData, propertyFeatures:data }
         }
-        case 'property/addSelectedFeatures':{
-            return { ...initialData, selectedPropertyFeatures:data }
+        case 'property/addFeatures':{
+            return { ...initialData, propertyFeatures:[...initialData['propertyFeatures'], data] }
         }
+        case 'property/removeFeatures':{
+            return { ...initialData, propertyFeatures: initialData['propertyFeatures'].filter(i=>i!==data) }
+        }
+
+        case 'property/addSelectedFeatures':{
+            return { ...initialData, selectedPropertyFeatures:[...initialData['selectedPropertyFeatures'], data] }
+        }
+        case 'property/removeSelectedFeatures':{
+            return { ...initialData, selectedPropertyFeatures: initialData['selectedPropertyFeatures'].filter(i=>i!==data) }
+        }
+
+
+        // case 'property/addSelectedFeatures':{
+        //     return { ...initialData, selectedPropertyFeatures:data }
+        // }
         case 'property/addTitle':{
             return { ...initialData, title:data }
         }
@@ -33,6 +65,9 @@ export default function propertyReducers(initialData, {type, data}) {
         case 'property/country':{
             return { ...initialData, country:data }
         }
+        case 'property/countryCode':{
+            return { ...initialData, countryCode:data }
+        }
         case 'property/city':{
             return { ...initialData, city:data }
         }
@@ -42,12 +77,17 @@ export default function propertyReducers(initialData, {type, data}) {
         case 'property/thana':{
             return { ...initialData, thana:data }
         }
-        case 'property/timeZone':{
+        case 'property/timezone':{
             return { ...initialData, timeZone:data }
         }
         case 'property/zipCode':{
             return { ...initialData, zipCode:data }
         }
+        case 'property/location':{
+            return { ...initialData, location:data }
+        }
+
+
         case 'property/homeRules':{
             return { ...initialData, homeRules:data }
         }

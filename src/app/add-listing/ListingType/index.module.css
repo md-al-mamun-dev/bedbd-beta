@@ -10,8 +10,7 @@
 
 .sub_heading{
     width: fit-content;
-    text-align: center;
-    margin: var(--size-900) auto;
+    text-align: center;    
     font-size: var(--size-425);
     font-weight: var(--fw-regular-dark);
     max-width: 883px;

@@ -39,7 +39,7 @@ setDefaults({
     region: "es", // Default region for responses.
   });
 
-export default function PropertyLocation({ nextPage, previousPage }) {
+export default function PropertyLocation({data, nextPage, previousPage }) {
   const dispatch = usePropertyDispatch()
 
   const [currentLocation, setCurrentLocation] = useState({lat:0.00,  lng:0.00})
@@ -101,11 +101,15 @@ export default function PropertyLocation({ nextPage, previousPage }) {
     }, [])
 
     function onContinueBtnClickHandlar() {
-      dispatch({type:'property/country', data:localInfo['country'] })
-      dispatch({type:'property/city', data:location['city_name'] })
-      dispatch({type:'property/timezone', data:location['time_zone'] })
+      dispatch({type:'property/country', data:{name: localInfo['country'], code: localInfo['countryCode']}     })
+      // dispatch({type:'property/countryCode', data: })
+      dispatch({type:'property/city', data:{ name:location['city_name'], lat:'', lng:''}})
+      dispatch({type:'property/timezone', data:`(GMT${location['time_zone']})` })
       dispatch({type:'property/zipCode', data:location['zip_code'] })
       dispatch({type:'property/location', data:currentLocation })
+      nextPage()
+      console.log(localInfo)
+      console.log(location)
     }
 
 

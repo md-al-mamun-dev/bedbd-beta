@@ -18,7 +18,7 @@ import Host from "./Host";
 import Rating from "./Rating";
 import Review from "./Review";
 import NearbyServices from "./NearbyServices";
-import LeafletMap from '@/components/LeafletMap'
+// import LeafletMap from '@/components/LeafletMap'
 
 
 const Property = async ({params}) => {
