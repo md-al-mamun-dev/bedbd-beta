@@ -17,6 +17,8 @@ const ImageUpload = ({nextPage, previousPage}) => {
 
     const dispatch = usePropertyDispatch()
     const onDrop = useCallback((acceptedFiles, rejectedFiles) => {
+
+        const imageArray = []
         if(acceptedFiles.length > 0){
             acceptedFiles.map(file => {
                 const imageObject  = Object.assign(file, {preview: URL.createObjectURL(file)}) 

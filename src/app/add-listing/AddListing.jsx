@@ -132,8 +132,7 @@ console.log(property)
         }
           {
             pageState === 'congrats'
-                      && <Congrats data={property}/>
- 
+                      && <Congrats data={property}/> 
           }
 
         

@@ -17,6 +17,8 @@ export default function TermsConditions({data, nextPage, previousPage }) {
         // const _LocationData = new FormData()
         // _LocationData.append('latitude', data['location']['lat'])
         // _LocationData.append('longitude', data['location']['lng'])
+        console.log(data['images'])
+        console.log(typeof data['images'])
 
 
         const _formData = new FormData()
@@ -48,6 +50,9 @@ export default function TermsConditions({data, nextPage, previousPage }) {
         _formData.append('roomCount',                           data['roomCount'])
         _formData.append('bedCount',                            data['bedCount'])
         _formData.append('guestCount',                          data['guestCount'])
+
+
+
         _formData.append('images',                              data['images'])
         _formData.append('currency',                            data['rentInfo']['currency'])
         _formData.append('rent',                                data['rentInfo']['rent'])
@@ -62,19 +67,24 @@ export default function TermsConditions({data, nextPage, previousPage }) {
 
 
 
-        const tokenResult = await accountService.getToken()
-
-        if(tokenResult){
-          const token = tokenResult['jwt']
-          // const token = 'sample token'
-          const response = await fetch(process.env.NEXT_PUBLIC_API_URL+"/api/register", {
+        // const tokenResult = await accountService.getToken()
+        // if(tokenResult){
+        //   const token = tokenResult['jwt']
+        //   const response = await fetch(process.env.NEXT_PUBLIC_API_URL+"/api/register", {
+        //     method: "POST",
+        //     headers: {                        
+        //       Authorization: `Bearer ${token}`,
+        //     },
+        //     body: _formData,
+        //   })
+        // }
+        const response = await fetch(process.env.NEXT_PUBLIC_API_URL+"/api/add-listing", {
             method: "POST",
-            headers: {                        
-              Authorization: `Bearer ${token}`,
+            headers: {
+              Authorization: `Bearer sampleToken`,
             },
             body: _formData,
           })
-        }
 
 
 
@@ -87,8 +97,7 @@ export default function TermsConditions({data, nextPage, previousPage }) {
 
 
 
-
-        nextPage()
+        // nextPage()
     }
 
   return (

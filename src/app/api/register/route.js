@@ -19,7 +19,7 @@ function createReadableStream(formData, fieldName) {
     size:null,
   };
 
-  for (const [key, value] of formData.entries()) {      
+  for (const [key, value] of formData.entries()) {
     if (key === fieldName) {
       if (value instanceof File) {
         result.fileName = value.name;
