@@ -27,7 +27,7 @@ import Amenities from './Amenities'
 
 
 const AddListing = () => {
-const [pageState, setPageState] = useState('amenities')
+const [pageState, setPageState] = useState('select-property-type')
 
 const property = useProperty()
 console.log(property)

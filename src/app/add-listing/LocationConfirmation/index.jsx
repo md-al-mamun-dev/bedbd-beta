@@ -76,7 +76,7 @@ export default function LocationConfirmation({data, nextPage, previousPage}) {
     // const citiesOfCountry = City.getCitiesOfCountry('BD')
 
     const [thana, setThana] = useState({name:''})
-    const [district, setDistrict] = useState({name:''})
+    const [district, setDistrict] = useState({ name:'', lat:'', lng:'' })
     const [address, setAddress] = useState({     aptFloor: '',
                                             streetAddress: '',
                                                addressOne: '',

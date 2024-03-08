@@ -2,17 +2,92 @@ import SwitchBtn from "../SwitchBtn"
 import { useState } from "react";
 import LucidIcon from "@/components/LucidIcon";
 import usePropertyDispatch from "@/context/property/usePropertyDispatch";
+import accountService from "@/service/AccountService";
 
 export default function TermsConditions({data, nextPage, previousPage }) {
     const [acceptLegitimateDeclaration, setAcceptLegitimateDeclaration] = useState(false)
     const [acceptReadTermsCondition, setAcceptReadTermsCondition] = useState(false)
     const dispatch = usePropertyDispatch()
 
-    function onContinueBtnClick() {
+    async function onContinueBtnClick() {
         dispatch({type:'property/termsCondition', data:{
                                                         legitimateDeclaration:acceptLegitimateDeclaration,
                                                         readTermsCondition:acceptReadTermsCondition
                                                     } })
+        // const _LocationData = new FormData()
+        // _LocationData.append('latitude', data['location']['lat'])
+        // _LocationData.append('longitude', data['location']['lng'])
+
+
+        const _formData = new FormData()
+
+        const selectedPropertyType = data['propertyTypes'].find(i => i['id']=== data['selectedPropertyType'])
+        const selectedBookingTypes = data['bookingTypes'].filter(i => data['selectedBookingType'].includes(i['id']))
+        const selectedPropertyFeatures = data['propertyFeatures'].filter(i => data['selectedPropertyFeatures'].includes(i['id']))
+        const selectedAmenities = data['amenities'].filter(i => data['selectedAmenities'].includes(i['id']))
+
+
+
+        _formData.append('selectedPropertyType', selectedPropertyType)
+        _formData.append('selectedBookingTypes', selectedBookingTypes)
+        _formData.append('selectedPropertyFeatures', selectedPropertyFeatures)
+        _formData.append('selectedAmenities', selectedAmenities)
+
+
+        _formData.append('propertyTitle',                       data['title'])
+        _formData.append('propertyDescription',                 data['propertyDescription'])
+        _formData.append('address',                             data['address'])
+        _formData.append('city',                                data['city'])
+        _formData.append('country',                             data['country'])
+        _formData.append('thana',                               data['thana'])
+        _formData.append('timeZone',                            data['timeZone'])
+        _formData.append('zipCode',                             data['zipCode'])
+        _formData.append('location',                            data['location'])
+        _formData.append('ownersDataValidDeclaration',          data['termsConditions']['legitimateDeclaration'])
+        _formData.append('readTermsCondition',                  data['termsConditions']['readTermsCondition'])        
+        _formData.append('roomCount',                           data['roomCount'])
+        _formData.append('bedCount',                            data['bedCount'])
+        _formData.append('guestCount',                          data['guestCount'])
+        _formData.append('images',                              data['images'])
+        _formData.append('currency',                            data['rentInfo']['currency'])
+        _formData.append('rent',                                data['rentInfo']['rent'])
+        _formData.append('serviceFee',                          data['rentInfo']['serviceFee'])
+        _formData.append('tax',                                 data['rentInfo']['tax'])
+        _formData.append('checkIn',                             data['availability']['checkIn'])
+        _formData.append('monthExtendStay',                     (data['availability']['monthExtendStay'] === 'yes'))
+        _formData.append('rebookAfterTimeFrame',                (data['availability']['rebookAfterTimeFrame']=== 'yes'))
+        _formData.append('approvingMethod',                     data['approvingMethod'])
+        _formData.append('genderPref',                          data['genderPref'])
+
+
+
+
+        const tokenResult = await accountService.getToken()
+
+        if(tokenResult){
+          const token = tokenResult['jwt']
+          // const token = 'sample token'
+          const response = await fetch(process.env.NEXT_PUBLIC_API_URL+"/api/register", {
+            method: "POST",
+            headers: {                        
+              Authorization: `Bearer ${token}`,
+            },
+            body: _formData,
+          })
+        }
+
+
+
+
+
+
+
+
+
+
+
+
+
         nextPage()
     }
 

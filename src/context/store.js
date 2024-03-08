@@ -28,7 +28,7 @@ export const store = {
 
         country:{name: '', code: ''},
         city:{ name:'', lat:'', lng:'' },
-        district:{},
+        district:{ name:'', lat:'', lng:'' },
         thana:{},
         timeZone:'',
         zipCode:'',
