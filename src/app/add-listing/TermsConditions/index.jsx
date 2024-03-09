@@ -28,6 +28,8 @@ export default function TermsConditions({data, nextPage, previousPage }) {
         const selectedBookingTypes = data['bookingTypes'].filter(i => data['selectedBookingType'].includes(i['id']))
         const selectedPropertyFeatures = data['propertyFeatures'].filter(i => data['selectedPropertyFeatures'].includes(i['id']))
         const selectedAmenities = data['amenities'].filter(i => data['selectedAmenities'].includes(i['id']))
+        const selectedHomeRules = data['homeRules'].filter(i => data['selectedHomeRules'].includes(i['id']))
+
 
         _formData.append('propertyType', JSON.stringify(selectedPropertyType))
         selectedBookingTypes.map(item=>{
@@ -39,6 +41,9 @@ export default function TermsConditions({data, nextPage, previousPage }) {
         })
         selectedAmenities.map(item=>{
             _formData.append('amenities', JSON.stringify(item))
+        })
+        selectedHomeRules.map(item=>{
+            _formData.append('homeRules', JSON.stringify(item))
         })
 
         _formData.append('propertyTitle',                       data['title'])
