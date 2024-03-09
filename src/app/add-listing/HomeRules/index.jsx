@@ -51,6 +51,8 @@ export default function HomeRules({data, nextPage, previousPage}) {
     useEffect(()=>{
         let ignore = false
         if(Object.keys(location).length > 0 && !ignore)
+
+            if(typeof location['time_zone'] !== undefined)
             setTimeZone(location['time_zone'])
 
         return ()=> ignore = true
@@ -58,7 +60,7 @@ export default function HomeRules({data, nextPage, previousPage}) {
 
     useEffect(()=>{
         let ignore = false
-        if(!isLoading && !ignore){
+        if(!isLoading && !ignore && (typeof timezoneData !== undefined) ){
             timezoneData.length > 0 && setTimeZone(timezoneData)
         }
 

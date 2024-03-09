@@ -56,10 +56,9 @@ export default function LocationConfirmation({data, nextPage, previousPage}) {
     useEffect(()=>{
         let ignore = false
         const { city,  timeZone  } = data 
-        if(!ignore){
+        if(!ignore && timeZone && (typeof timeZone !== undefined)){
             setTimeZone(timeZone+' '+city['name'])
-        }
-        
+        }        
         return ()=> ignore = true 
     }, [data])
 
@@ -96,7 +95,7 @@ export default function LocationConfirmation({data, nextPage, previousPage}) {
     // const [propertyDescription, setPropertyDescription] = useState('')
 
     function onContinueBtnClick() {
-        console.log(timeZone)
+        // console.log(timeZone)
         dispatch({type:'property/address',            data: address  })
         dispatch({type:'property/country',            data: country  })
         dispatch({type:'property/city',               data: city     })
